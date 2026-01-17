@@ -97,9 +97,9 @@ export function ActionLog({ messages, player1Name = "Player 1", player2Name = "P
   }, [messages])
 
   return (
-    <div className="bg-card rounded-lg border border-border overflow-hidden">
+    <div className="bg-card rounded-lg border border-border overflow-hidden h-auto">
       <h3 className="text-xs font-semibold text-primary px-3 py-2 bg-card border-b border-border">Battle Log</h3>
-      <div ref={scrollRef} className="h-48 overflow-y-auto p-3 space-y-2 no-scrollbar">
+      <div ref={scrollRef} className="h-auto overflow-y-auto p-3 space-y-2 no-scrollbar">
         {messages.map((msg, index) => {
           const type = getMessageType(msg, player1Name, player2Name)
           const stanceIcon = getStanceIcon(msg)

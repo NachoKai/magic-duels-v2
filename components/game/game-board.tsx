@@ -302,7 +302,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
         </div>
 
         {/* Game Area */}
-        <div className="bg-card rounded-xl border border-border p-6 min-h-[400px]">
+        <div className="bg-card rounded-xl border border-border p-6">
           {gameState.phase === "gameover" ? (
             <div className="flex flex-col items-center justify-center h-full gap-6 py-12">
               <Trophy

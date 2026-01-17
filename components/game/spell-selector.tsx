@@ -4,6 +4,7 @@ import { type Spell, type Stance, getSpellsByStance, getEffectDisplayName } from
 import { cn } from "@/lib/utils"
 import { useState } from "react"
 import { Sparkles, Heart, Zap, Droplet, Flame } from "lucide-react"
+import Image from "next/image"
 
 interface SpellSelectorProps {
   stance: Stance
@@ -57,7 +58,18 @@ export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps
                 : "border-border bg-card hover:bg-secondary/50",
             )}
           >
-            <div className="flex items-center gap-2 mb-1">
+            <div className="w-full flex items-center justify-center mb-2">
+              <div className="relative w-16 h-16">
+                <Image
+                  src={spell.image}
+                  alt={spell.name}
+                  fill
+                  className="object-contain"
+                  sizes="64px"
+                />
+              </div>
+            </div>
+            <div className="flex items-center gap-2 mb-1 w-full">
               <Sparkles className={cn("w-4 h-4", `text-${getStanceColor()}`)} />
               <span className="font-medium text-sm text-foreground truncate">{spell.name}</span>
             </div>
@@ -99,6 +111,15 @@ export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps
 
       {selectedSpell && (
         <div className="flex flex-col items-center gap-3 p-4 bg-secondary/50 rounded-lg border border-border">
+          <div className="relative w-24 h-24 mb-2">
+            <Image
+              src={selectedSpell.image}
+              alt={selectedSpell.name}
+              fill
+              className="object-contain"
+              sizes="96px"
+            />
+          </div>
           <div className="text-center">
             <h3 className={cn("font-semibold", `text-${getStanceColor()}`)}>{selectedSpell.name}</h3>
             <p className="text-sm text-muted-foreground">{selectedSpell.description}</p>

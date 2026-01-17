@@ -25,6 +25,7 @@ export interface Spell {
   baseHeal: number;
   effects: SpellEffect[];
   description: string;
+  image: string;
 }
 
 export interface StatusEffect {
@@ -55,6 +56,7 @@ export const spells: Spell[] = [
       { type: "heal", value: 5, duration: 3, chance: 40 },
     ],
     description: "Stops bleed, heals over time",
+    image: "/assets/brp-2_orig.png",
   },
   {
     id: "wiggenweld",
@@ -67,6 +69,7 @@ export const spells: Spell[] = [
       { type: "heal", value: 6, duration: 2, chance: 25 },
     ],
     description: "Instant heal with chance for more",
+    image: "/assets/wiggenweld.png",
   },
   {
     id: "vulnera-sanentur",
@@ -80,6 +83,7 @@ export const spells: Spell[] = [
       { type: "heal", value: 5, duration: 2, chance: 30 },
     ],
     description: "Strong heal, stops bleed and burn",
+    image: "/assets/vulnera_orig.png",
   },
   {
     id: "episkey",
@@ -89,6 +93,7 @@ export const spells: Spell[] = [
     baseHeal: 10,
     effects: [{ type: "heal", value: 5, duration: 2, chance: 100 }],
     description: "Reliable healing spell",
+    image: "/assets/episkey.png",
   },
   {
     id: "glacius",
@@ -103,6 +108,7 @@ export const spells: Spell[] = [
       { type: "bleed", value: 3, duration: 3, chance: 20 },
     ],
     description: "Freezing attack, stops status effects",
+    image: "/assets/glacius.png",
   },
   {
     id: "blue-fire-spell",
@@ -115,6 +121,7 @@ export const spells: Spell[] = [
       { type: "burn", value: 10, duration: 3, chance: 65 },
     ],
     description: "Magical blue flames",
+    image: "/assets/blue-fire_orig.png",
   },
   {
     id: "hot-air-charm",
@@ -127,6 +134,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 30 },
     ],
     description: "Warm air blast",
+    image: "/assets/hotair_orig.png",
   },
   {
     id: "leek-jinx",
@@ -139,6 +147,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 3, chance: 30 },
     ],
     description: "Sprouts leeks from ears",
+    image: "/assets/leek-jinx_orig.png",
   },
   {
     id: "tarantallegra",
@@ -151,6 +160,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 30 },
     ],
     description: "Forces uncontrollable dancing",
+    image: "/assets/tarantallegra_orig.png",
   },
   {
     id: "diminuendo",
@@ -160,6 +170,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "drain", value: 5, duration: 2, chance: 33 }],
     description: "Shrinking hex",
+    image: "/assets/diminuendo_orig.png",
   },
   {
     id: "levicorpus",
@@ -172,6 +183,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 30 },
     ],
     description: "Hangs target upside down",
+    image: "/assets/levicorpus_orig.png",
   },
   {
     id: "petrificus-totalus",
@@ -184,6 +196,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 20 },
     ],
     description: "Full body-bind curse",
+    image: "/assets/petri_orig.png",
   },
   {
     id: "brachiabindo",
@@ -198,6 +211,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 4, chance: 10 },
     ],
     description: "Binds arms with ropes",
+    image: "/assets/brachia_orig.png",
   },
   {
     id: "fulgari",
@@ -207,6 +221,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 2, chance: 55 }],
     description: "Binding spell with light",
+    image: "/assets/fulgari_orig.png",
   },
   {
     id: "waddiwasi",
@@ -216,6 +231,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [],
     description: "Shoots objects at target",
+    image: "/assets/waddiwasi_orig.png",
   },
   {
     id: "slugulus-eructo",
@@ -228,6 +244,7 @@ export const spells: Spell[] = [
       { type: "bleed", value: 5, duration: 1, chance: 50 },
     ],
     description: "Causes slug vomiting",
+    image: "/assets/slugus_orig.png",
   },
 
   // SNEAKY SPELLS
@@ -239,6 +256,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 1, chance: 20 }],
     description: "Binds target with ropes",
+    image: "/assets/incarcerous_orig.png",
   },
   {
     id: "rictusempra",
@@ -248,6 +266,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 1, chance: 40 }],
     description: "Tickling charm",
+    image: "/assets/rictusempra_orig.png",
   },
   {
     id: "flipendo",
@@ -257,6 +276,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [],
     description: "Knockback jinx",
+    image: "/assets/flipendo_orig.png",
   },
   {
     id: "impedimenta",
@@ -266,6 +286,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 2, chance: 40 }],
     description: "Impediment jinx",
+    image: "/assets/impedi_orig.png",
   },
   {
     id: "diffindo",
@@ -275,6 +296,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "bleed", value: 3, duration: 8, chance: 75 }],
     description: "Severing charm",
+    image: "/assets/diffindo_orig.png",
   },
   {
     id: "giant-dungbomb",
@@ -287,6 +309,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 1, chance: 30 },
     ],
     description: "Explosive stink bomb",
+    image: "/assets/dungbomb_orig.png",
   },
   {
     id: "immobulus",
@@ -296,6 +319,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 1, chance: 25 }],
     description: "Freezing charm",
+    image: "/assets/immobulus_orig.png",
   },
   {
     id: "windy-spell",
@@ -308,6 +332,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 15 },
     ],
     description: "Powerful gust of wind",
+    image: "/assets/windyspell_orig.png",
   },
   {
     id: "nebulus",
@@ -320,6 +345,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 4, chance: 20 },
     ],
     description: "Creates fog",
+    image: "/assets/nebulus_orig.png",
   },
   {
     id: "bewitched-sleep",
@@ -329,6 +355,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "burn", value: 10, duration: 2, chance: 100 }],
     description: "Magical sleep curse",
+    image: "/assets/bewithed_orig.png",
   },
   {
     id: "obscuro",
@@ -341,6 +368,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 15 },
     ],
     description: "Blindfolds target",
+    image: "/assets/obscuro_orig.png",
   },
   {
     id: "pimple-jinx",
@@ -353,6 +381,7 @@ export const spells: Spell[] = [
       { type: "bleed", value: 3, duration: 5, chance: 20 },
     ],
     description: "Causes painful pimples",
+    image: "/assets/pimple_orig.png",
   },
   {
     id: "hair-thickening-charm",
@@ -366,6 +395,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 45 },
     ],
     description: "Overgrows hair dramatically",
+    image: "/assets/hair-thickening_orig.png",
   },
   {
     id: "pus-squirting-hex",
@@ -378,6 +408,7 @@ export const spells: Spell[] = [
       { type: "bleed", value: 5, duration: 3, chance: 20 },
     ],
     description: "Disgusting pus attack",
+    image: "/assets/pus-squirting2_orig.png",
   },
   {
     id: "flagrante",
@@ -390,6 +421,7 @@ export const spells: Spell[] = [
       { type: "burn", value: 10, duration: 2, chance: 85 },
     ],
     description: "Burning curse on objects",
+    image: "/assets/flagrante_orig.png",
   },
   {
     id: "tickling-hex",
@@ -402,6 +434,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 65 },
     ],
     description: "Intense tickling curse",
+    image: "/assets/tickling_orig.png",
   },
   {
     id: "jelly-legs-jinx",
@@ -414,6 +447,7 @@ export const spells: Spell[] = [
       { type: "drain", value: 5, duration: 5, chance: 50 },
     ],
     description: "Makes legs wobbly",
+    image: "/assets/jelly-legs-jinx_orig.png",
   },
   {
     id: "babbling-curse",
@@ -426,6 +460,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 30 },
     ],
     description: "Causes uncontrollable babbling",
+    image: "/assets/babbling_orig.png",
   },
   {
     id: "cantis",
@@ -438,6 +473,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 20 },
     ],
     description: "Forces singing",
+    image: "/assets/cantis_orig.png",
   },
   {
     id: "ebublio-jinx",
@@ -450,6 +486,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 30 },
     ],
     description: "Traps in bubble",
+    image: "/assets/ebublio_orig.png",
   },
   {
     id: "stupefy",
@@ -459,6 +496,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 2, chance: 55 }],
     description: "Stunning spell",
+    image: "/assets/stupefy_orig.png",
   },
 
   // AGGRESSIVE SPELLS
@@ -470,6 +508,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 1, chance: 25 }],
     description: "Disarming charm",
+    image: "/assets/expell_orig.png",
   },
   {
     id: "melofors-jinx",
@@ -479,6 +518,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 1, chance: 30 }],
     description: "Encases head in pumpkin",
+    image: "/assets/melofors_orig.png",
   },
   {
     id: "bombarda",
@@ -491,6 +531,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 1, chance: 25 },
     ],
     description: "Explosive spell",
+    image: "/assets/bombarda.png",
   },
   {
     id: "incendio",
@@ -503,6 +544,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 10 },
     ],
     description: "Fire-making spell",
+    image: "/assets/incendio_orig.png",
   },
   {
     id: "confringo",
@@ -512,6 +554,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 2, chance: 20 }],
     description: "Blasting curse",
+    image: "/assets/confrigo_orig.png",
   },
   {
     id: "bat-bogey-hex",
@@ -521,6 +564,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "bleed", value: 3, duration: 4, chance: 30 }],
     description: "Transforms bogeys into bats",
+    image: "/assets/batbogey_orig.png",
   },
   {
     id: "fanged-frisbee",
@@ -530,6 +574,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "bleed", value: 3, duration: 4, chance: 65 }],
     description: "Flying biting disc",
+    image: "/assets/fanged_orig.png",
   },
   {
     id: "stick-fast-hex",
@@ -539,6 +584,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 3, chance: 65 }],
     description: "Sticks target in place",
+    image: "/assets/stickfast_orig.png",
   },
   {
     id: "throw-vial",
@@ -548,6 +594,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [],
     description: "Throws explosive potion",
+    image: "/assets/throwvial.png",
   },
   {
     id: "depulso",
@@ -557,6 +604,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [],
     description: "Banishing charm",
+    image: "/assets/depulso_orig.png",
   },
   {
     id: "arrow-shooting",
@@ -566,6 +614,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 3, chance: 15 }],
     description: "Conjures and shoots arrows",
+    image: "/assets/arrowshooting_orig.png",
   },
   {
     id: "avifors",
@@ -575,6 +624,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [],
     description: "Transforms into birds",
+    image: "/assets/avifors_orig.png",
   },
   {
     id: "meteolojinx",
@@ -584,6 +634,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 1, chance: 30 }],
     description: "Weather-affecting jinx",
+    image: "/assets/meteo.png",
   },
   {
     id: "cornflake-skin-jinx",
@@ -596,6 +647,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 33 },
     ],
     description: "Turns skin flaky",
+    image: "/assets/cornflake_orig.png",
   },
   {
     id: "bee-sting-jinx",
@@ -605,6 +657,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 3, chance: 33 }],
     description: "Swarm of stinging bees",
+    image: "/assets/bee-sting_orig.png",
   },
   {
     id: "relashio",
@@ -617,6 +670,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 40 },
     ],
     description: "Releasing sparks",
+    image: "/assets/relashio_orig.png",
   },
   {
     id: "throw-teacup",
@@ -629,6 +683,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 25 },
     ],
     description: "Hurls enchanted teacup",
+    image: "/assets/throw-teacu_orig.png",
   },
   {
     id: "anteoculatia",
@@ -638,6 +693,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "bleed", value: 3, duration: 4, chance: 100 }],
     description: "Grows antlers on head",
+    image: "/assets/anteo_orig.png",
   },
   {
     id: "pepper-breath",
@@ -647,6 +703,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 1, chance: 20 }],
     description: "Fiery breath attack",
+    image: "/assets/pepper_orig.png",
   },
   {
     id: "insect-hex",
@@ -659,6 +716,7 @@ export const spells: Spell[] = [
       { type: "bleed", value: 5, duration: 4, chance: 75 },
     ],
     description: "Summons biting insects",
+    image: "/assets/insect-hex_orig.png",
   },
   {
     id: "vaulting-charm",
@@ -668,6 +726,7 @@ export const spells: Spell[] = [
     baseHeal: 0,
     effects: [{ type: "stun", value: 1, chance: 65 }],
     description: "Launches target into air",
+    image: "/assets/vauktingcharm.png",
   },
   {
     id: "mobilicorpus",
@@ -681,6 +740,7 @@ export const spells: Spell[] = [
       { type: "stun", value: 2, chance: 10 },
     ],
     description: "Levitates and moves bodies",
+    image: "/assets/mobili_orig.png",
   },
 ];
 
