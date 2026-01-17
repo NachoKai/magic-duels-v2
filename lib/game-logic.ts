@@ -221,7 +221,7 @@ export const applySpell = (
             `${diceInfo} Draining: ${effect.value}/turn for ${effect.duration} turns`
           );
           break;
-        case "stopBleed":
+        case "stopBleed": {
           const bleedCount = newCasterEffects.filter(
             (e) => e.type === "bleed"
           ).length;
@@ -234,7 +234,8 @@ export const applySpell = (
             ...newCasterEffects.filter((e) => e.type !== "bleed")
           );
           break;
-        case "stopBurn":
+        }
+        case "stopBurn": {
           const burnCount = newCasterEffects.filter(
             (e) => e.type === "burn"
           ).length;
@@ -247,6 +248,7 @@ export const applySpell = (
             ...newCasterEffects.filter((e) => e.type !== "burn")
           );
           break;
+        }
         case "stopAll":
           newCasterEffects.splice(0, newCasterEffects.length);
           messages.push(`${diceInfo} All status effects cleared!`);
@@ -311,7 +313,7 @@ export const applySpell = (
             `Draining: ${effect.value}/turn for ${effect.duration} turns`
           );
           break;
-        case "stopBleed":
+        case "stopBleed": {
           const bleedCount = newCasterEffects.filter(
             (e) => e.type === "bleed"
           ).length;
@@ -324,7 +326,8 @@ export const applySpell = (
             ...newCasterEffects.filter((e) => e.type !== "bleed")
           );
           break;
-        case "stopBurn":
+        }
+        case "stopBurn": {
           const burnCount = newCasterEffects.filter(
             (e) => e.type === "burn"
           ).length;
@@ -337,6 +340,7 @@ export const applySpell = (
             ...newCasterEffects.filter((e) => e.type !== "burn")
           );
           break;
+        }
         case "stopAll":
           newCasterEffects.splice(0, newCasterEffects.length);
           messages.push("All status effects cleared!");

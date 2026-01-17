@@ -28,13 +28,6 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
     createInitialState(gameMode)
   );
 
-  const addMessages = useCallback((newMessages: string[]) => {
-    setGameState((prev) => ({
-      ...prev,
-      lastAction: [...prev.lastAction, ...newMessages],
-    }));
-  }, []);
-
   const handleStanceSelect = useCallback(
     (stance: Stance) => {
       if (gameMode === "cpu") {
@@ -228,8 +221,6 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
       const targetState = winner === 1 ? gameState.player2 : gameState.player1;
       const winnerName =
         winner === 1 ? "Player 1" : gameMode === "cpu" ? "CPU" : "Player 2";
-      const loserName =
-        winner === 1 ? (gameMode === "cpu" ? "CPU" : "Player 2") : "Player 1";
       const winnerStance =
         winner === 1 ? gameState.player1Stance : gameState.player2Stance;
 

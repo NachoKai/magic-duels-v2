@@ -103,8 +103,8 @@ export function MainMenu({ onStartGame }: MainMenuProps) {
               </li>
             </ul>
 
-            <p>3. The winner casts a spell from their stance category</p>
-            <p>4. Reduce your opponent's health to 0 to win!</p>
+            <p>3. The winner casts a spell from their stance&apos; category</p>
+            <p>4. Reduce your opponent&apos;s health to 0 to win!</p>
           </div>
         </div>
 

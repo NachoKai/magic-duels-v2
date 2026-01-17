@@ -19,6 +19,17 @@ export default [
           jsx: true,
         },
       },
+      globals: {
+        React: "readonly",
+        HTMLDivElement: "readonly",
+        HTMLButtonElement: "readonly",
+        HTMLElement: "readonly",
+        document: "readonly",
+        window: "readonly",
+        KeyboardEvent: "readonly",
+        setTimeout: "readonly",
+        clearTimeout: "readonly",
+      },
     },
     plugins: {
       "@typescript-eslint": typescript,
