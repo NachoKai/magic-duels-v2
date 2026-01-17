@@ -138,7 +138,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
             lastAction: [
               ...prev.lastAction,
               `--- Turn ${prev.turn} ---`,
-              `[${stance}] Player 1 chose ${stance}`,
+              `Player 1 is ready`,
             ],
           }));
         } else {
@@ -146,6 +146,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
           const result = getStanceAdvantage(p1Stance, stance);
 
           const messages = [
+            `[${p1Stance}] Player 1 chose ${p1Stance}`,
             `[${stance}] Player 2 chose ${stance}`,
             `${p1Stance} vs ${stance}`,
           ];
