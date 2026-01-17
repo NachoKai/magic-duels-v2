@@ -586,6 +586,440 @@ export const spellForms: SpellForm[] = [
       { x: 0.65, y: 0.35 },
     ],
   },
+  // NEW DEFENSIVE SPELLS
+  // Blood Replenishing - Drop shape
+  {
+    spellId: "blood-replenishing",
+    points: [
+      { x: 0.5, y: 0.2 },
+      { x: 0.5, y: 0.7 },
+      { x: 0.4, y: 0.8 },
+      { x: 0.6, y: 0.8 },
+      { x: 0.5, y: 0.7 },
+    ],
+  },
+  // Wiggenweld - Plus sign
+  {
+    spellId: "wiggenweld",
+    points: [
+      { x: 0.5, y: 0.2 },
+      { x: 0.5, y: 0.8 },
+      { x: 0.2, y: 0.5 },
+      { x: 0.8, y: 0.5 },
+    ],
+  },
+  // Hot Air Charm - Rising wavy lines (Heat)
+  {
+    spellId: "hot-air-charm",
+    points: [
+      { x: 0.3, y: 0.8 },
+      { x: 0.3, y: 0.2 },
+      { x: 0.5, y: 0.8 },
+      { x: 0.5, y: 0.2 },
+      { x: 0.7, y: 0.8 },
+      { x: 0.7, y: 0.2 },
+    ],
+  },
+  // Leek Jinx - Leek shape (stalk with leaves)
+  {
+    spellId: "leek-jinx",
+    points: [
+      { x: 0.5, y: 0.8 },
+      { x: 0.5, y: 0.3 },
+      { x: 0.3, y: 0.1 },
+      { x: 0.5, y: 0.3 },
+      { x: 0.7, y: 0.1 },
+    ],
+  },
+  // Tarantallegra - Dancing legs (zig-zag)
+  {
+    spellId: "tarantallegra",
+    points: [
+      { x: 0.3, y: 0.2 },
+      { x: 0.3, y: 0.5 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.6, y: 0.4 },
+      { x: 0.7, y: 0.5 },
+      { x: 0.7, y: 0.8 },
+    ],
+  },
+  // Diminuendo - Shrinking box
+  {
+    spellId: "diminuendo",
+    points: [
+      { x: 0.2, y: 0.2 },
+      { x: 0.8, y: 0.2 },
+      { x: 0.8, y: 0.8 },
+      { x: 0.2, y: 0.8 },
+      { x: 0.2, y: 0.2 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.6, y: 0.4 },
+      { x: 0.6, y: 0.6 },
+      { x: 0.4, y: 0.6 },
+      { x: 0.4, y: 0.4 },
+    ],
+  },
+  // Brachiabindo - Binding rope loops
+  {
+    spellId: "brachiabindo",
+    points: [
+      { x: 0.3, y: 0.3 },
+      { x: 0.7, y: 0.3 },
+      { x: 0.3, y: 0.5 },
+      { x: 0.7, y: 0.5 },
+      { x: 0.3, y: 0.7 },
+      { x: 0.7, y: 0.7 },
+    ],
+  },
+  // Fulgari - Lightning bolt with bind
+  {
+    spellId: "fulgari",
+    points: [
+      { x: 0.4, y: 0.2 },
+      { x: 0.6, y: 0.2 },
+      { x: 0.3, y: 0.5 },
+      { x: 0.7, y: 0.5 },
+      { x: 0.5, y: 0.8 },
+    ],
+  },
+  // Slugulus Eructo - Spiral out (vomiting slug motion)
+  {
+    spellId: "slugulus-eructo",
+    points: [
+      { x: 0.5, y: 0.5 },
+      { x: 0.6, y: 0.6 },
+      { x: 0.5, y: 0.7 },
+      { x: 0.4, y: 0.6 },
+      { x: 0.5, y: 0.4 },
+      { x: 0.7, y: 0.6 },
+      { x: 0.5, y: 0.8 },
+    ],
+  },
+
+  // NEW SNEAKY SPELLS
+  // Giant Dungbomb - Explosion cloud
+  {
+    spellId: "giant-dungbomb",
+    points: [
+      { x: 0.4, y: 0.4 },
+      { x: 0.6, y: 0.4 },
+      { x: 0.7, y: 0.5 },
+      { x: 0.6, y: 0.7 },
+      { x: 0.4, y: 0.7 },
+      { x: 0.3, y: 0.5 },
+      { x: 0.4, y: 0.4 },
+    ],
+  },
+  // Nebulus - Fog swirl
+  {
+    spellId: "nebulus",
+    points: [
+      { x: 0.2, y: 0.7 },
+      { x: 0.3, y: 0.5 },
+      { x: 0.5, y: 0.6 },
+      { x: 0.7, y: 0.4 },
+      { x: 0.8, y: 0.6 },
+    ],
+  },
+  // Bewitched Sleep - Z shape
+  {
+    spellId: "bewitched-sleep",
+    points: [
+      { x: 0.3, y: 0.3 },
+      { x: 0.7, y: 0.3 },
+      { x: 0.3, y: 0.7 },
+      { x: 0.7, y: 0.7 },
+    ],
+  },
+  // Obscuro - Blindfold line
+  {
+    spellId: "obscuro",
+    points: [
+      { x: 0.2, y: 0.4 },
+      { x: 0.8, y: 0.4 },
+      { x: 0.8, y: 0.6 },
+      { x: 0.2, y: 0.6 },
+      { x: 0.2, y: 0.4 },
+    ],
+  },
+  // Pimple Jinx - Spots
+  {
+    spellId: "pimple-jinx",
+    points: [
+      { x: 0.3, y: 0.3 },
+      { x: 0.35, y: 0.3 },
+      { x: 0.7, y: 0.3 },
+      { x: 0.75, y: 0.3 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.3, y: 0.7 },
+      { x: 0.35, y: 0.7 },
+      { x: 0.7, y: 0.7 },
+      { x: 0.75, y: 0.7 },
+    ],
+  },
+  // Hair Thickening Charm - Hair strands
+  {
+    spellId: "hair-thickening-charm",
+    points: [
+      { x: 0.3, y: 0.2 },
+      { x: 0.3, y: 0.8 },
+      { x: 0.4, y: 0.2 },
+      { x: 0.4, y: 0.8 },
+      { x: 0.5, y: 0.2 },
+      { x: 0.5, y: 0.8 },
+      { x: 0.6, y: 0.2 },
+      { x: 0.6, y: 0.8 },
+    ],
+  },
+  // Flagrante - Fire flicker
+  {
+    spellId: "flagrante",
+    points: [
+      { x: 0.3, y: 0.8 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.5, y: 0.6 },
+      { x: 0.6, y: 0.3 },
+      { x: 0.7, y: 0.8 },
+    ],
+  },
+  // Tickling Hex - Feather shape
+  {
+    spellId: "tickling-hex",
+    points: [
+      { x: 0.5, y: 0.2 },
+      { x: 0.5, y: 0.8 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.7, y: 0.4 },
+      { x: 0.5, y: 0.6 },
+      { x: 0.7, y: 0.5 },
+    ],
+  },
+  // Jelly Legs Jinx - Wobbly legs
+  {
+    spellId: "jelly-legs-jinx",
+    points: [
+      { x: 0.3, y: 0.2 },
+      { x: 0.4, y: 0.5 },
+      { x: 0.3, y: 0.8 },
+      { x: 0.7, y: 0.2 },
+      { x: 0.6, y: 0.5 },
+      { x: 0.7, y: 0.8 },
+    ],
+  },
+  // Babbling Curse - Speech bubble loop
+  {
+    spellId: "babbling-curse",
+    points: [
+      { x: 0.4, y: 0.4 },
+      { x: 0.6, y: 0.4 },
+      { x: 0.6, y: 0.6 },
+      { x: 0.4, y: 0.6 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.3, y: 0.7 },
+    ],
+  },
+  // Cantis - Music note
+  {
+    spellId: "cantis",
+    points: [
+      { x: 0.3, y: 0.7 },
+      { x: 0.4, y: 0.8 },
+      { x: 0.5, y: 0.7 },
+      { x: 0.5, y: 0.3 },
+      { x: 0.5, y: 0.3 },
+      { x: 0.7, y: 0.4 },
+    ],
+  },
+  // Ebublio Jinx - Bubbles
+  {
+    spellId: "ebublio-jinx",
+    points: [
+      { x: 0.3, y: 0.3 },
+      { x: 0.4, y: 0.3 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.3, y: 0.4 },
+      { x: 0.3, y: 0.3 },
+      { x: 0.6, y: 0.6 },
+      { x: 0.7, y: 0.6 },
+      { x: 0.7, y: 0.7 },
+      { x: 0.6, y: 0.7 },
+      { x: 0.6, y: 0.6 },
+    ],
+  },
+
+  // NEW AGGRESSIVE SPELLS
+  // Melofors Jinx - Pumpkin shape
+  {
+    spellId: "melofors-jinx",
+    points: [
+      { x: 0.5, y: 0.3 },
+      { x: 0.3, y: 0.4 },
+      { x: 0.3, y: 0.6 },
+      { x: 0.5, y: 0.7 },
+      { x: 0.7, y: 0.6 },
+      { x: 0.7, y: 0.4 },
+      { x: 0.5, y: 0.3 },
+      { x: 0.5, y: 0.2 },
+    ],
+  },
+  // Bat-Bogey Hex - Bat wings
+  {
+    spellId: "bat-bogey-hex",
+    points: [
+      { x: 0.2, y: 0.4 },
+      { x: 0.3, y: 0.3 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.6, y: 0.4 },
+      { x: 0.7, y: 0.3 },
+      { x: 0.8, y: 0.4 },
+    ],
+  },
+  // Fanged Frisbee - Spinning disc
+  {
+    spellId: "fanged-frisbee",
+    points: [
+      { x: 0.5, y: 0.3 },
+      { x: 0.7, y: 0.5 },
+      { x: 0.5, y: 0.7 },
+      { x: 0.3, y: 0.5 },
+      { x: 0.5, y: 0.3 },
+      { x: 0.6, y: 0.4 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.4, y: 0.4 },
+    ],
+  },
+  // Stick Fast Hex - Glue puddle
+  {
+    spellId: "stick-fast-hex",
+    points: [
+      { x: 0.3, y: 0.7 },
+      { x: 0.7, y: 0.7 },
+      { x: 0.6, y: 0.6 },
+      { x: 0.4, y: 0.6 },
+      { x: 0.3, y: 0.7 },
+    ],
+  },
+  // Throw Vial - Arced throw
+  {
+    spellId: "throw-vial",
+    points: [
+      { x: 0.2, y: 0.7 },
+      { x: 0.3, y: 0.4 },
+      { x: 0.5, y: 0.2 },
+      { x: 0.7, y: 0.4 },
+      { x: 0.8, y: 0.7 },
+    ],
+  },
+  // Cornflake Skin Jinx - Flakes
+  {
+    spellId: "cornflake-skin-jinx",
+    points: [
+      { x: 0.3, y: 0.3 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.5, y: 0.3 },
+      { x: 0.6, y: 0.4 },
+      { x: 0.7, y: 0.3 },
+      { x: 0.3, y: 0.6 },
+      { x: 0.4, y: 0.7 },
+      { x: 0.5, y: 0.6 },
+      { x: 0.6, y: 0.7 },
+      { x: 0.7, y: 0.6 },
+    ],
+  },
+  // Bee-Sting Jinx - B shape / Flight path
+  {
+    spellId: "bee-sting-jinx",
+    points: [
+      { x: 0.3, y: 0.8 },
+      { x: 0.3, y: 0.2 },
+      { x: 0.5, y: 0.3 },
+      { x: 0.3, y: 0.4 },
+      { x: 0.6, y: 0.6 },
+      { x: 0.3, y: 0.8 },
+    ],
+  },
+  // Relashio - Burst open
+  {
+    spellId: "relashio",
+    points: [
+      { x: 0.5, y: 0.5 },
+      { x: 0.3, y: 0.3 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.7, y: 0.3 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.3, y: 0.7 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.7, y: 0.7 },
+    ],
+  },
+  // Throw Teacup - Cup shape
+  {
+    spellId: "throw-teacup",
+    points: [
+      { x: 0.3, y: 0.4 },
+      { x: 0.3, y: 0.7 },
+      { x: 0.7, y: 0.7 },
+      { x: 0.7, y: 0.4 },
+      { x: 0.7, y: 0.5 },
+      { x: 0.8, y: 0.5 },
+      { x: 0.8, y: 0.6 },
+      { x: 0.7, y: 0.6 },
+    ],
+  },
+  // Anteoculatia - Antlers
+  {
+    spellId: "anteoculatia",
+    points: [
+      { x: 0.5, y: 0.5 },
+      { x: 0.3, y: 0.3 },
+      { x: 0.2, y: 0.2 },
+      { x: 0.3, y: 0.3 },
+      { x: 0.2, y: 0.4 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.7, y: 0.3 },
+      { x: 0.8, y: 0.2 },
+      { x: 0.7, y: 0.3 },
+      { x: 0.8, y: 0.4 },
+    ],
+  },
+  // Pepper Breath - Spreading breath
+  {
+    spellId: "pepper-breath",
+    points: [
+      { x: 0.5, y: 0.7 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.3, y: 0.2 },
+      { x: 0.5, y: 0.2 },
+      { x: 0.7, y: 0.2 },
+      { x: 0.6, y: 0.4 },
+      { x: 0.5, y: 0.7 },
+    ],
+  },
+  // Vaulting Charm - Jump arc
+  {
+    spellId: "vaulting-charm",
+    points: [
+      { x: 0.2, y: 0.8 },
+      { x: 0.3, y: 0.5 },
+      { x: 0.5, y: 0.2 },
+      { x: 0.7, y: 0.5 },
+      { x: 0.8, y: 0.8 },
+    ],
+  },
+  // Mobilicorpus - Puppet strings
+  {
+    spellId: "mobilicorpus",
+    points: [
+      { x: 0.2, y: 0.2 },
+      { x: 0.2, y: 0.6 },
+      { x: 0.5, y: 0.2 },
+      { x: 0.5, y: 0.6 },
+      { x: 0.8, y: 0.2 },
+      { x: 0.8, y: 0.6 },
+    ],
+  },
 ];
 
 // Default forms for spells not explicitly defined (simple patterns)
