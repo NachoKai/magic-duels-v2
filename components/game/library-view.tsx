@@ -73,14 +73,21 @@ export function LibraryView({ onBack }: LibraryViewProps) {
 
         <ScrollArea className="flex-1">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-8">
-            {spells.map((spell) => (
-              <SpellCard
-                key={spell.spellId}
-                spell={spell}
-                name={formatSpellName(spell.spellId)}
-                onClick={() => handleSpellClick(spell)}
-              />
-            ))}
+            {spells.map((spellForm) => {
+              const spellData = allSpellsData.find(
+                (s) => s.id === spellForm.spellId
+              );
+              if (!spellData) return null;
+
+              return (
+                <SpellCard
+                  key={spellForm.spellId}
+                  spellForm={spellForm}
+                  spellData={spellData}
+                  onClick={() => handleSpellClick(spellForm)}
+                />
+              );
+            })}
           </div>
         </ScrollArea>
       </div>
@@ -99,68 +106,134 @@ export function LibraryView({ onBack }: LibraryViewProps) {
 }
 
 function SpellCard({
-  spell,
-  name,
+  spellForm,
+  spellData,
   onClick,
 }: {
-  spell: SpellForm;
-  name: string;
+  spellForm: SpellForm;
+  spellData: Spell;
   onClick: () => void;
 }) {
   // Convert normalized points (0-1) to SVG coordinates (0-100)
-  const pointsString = spell.points
+  const pointsString = spellForm.points
     .map((p) => `${p.x * 100},${p.y * 100}`)
     .join(" ");
 
+  const stanceColor =
+    spellData.stance === "Aggressive"
+      ? "text-red-500"
+      : spellData.stance === "Defensive"
+        ? "text-blue-500"
+        : "text-yellow-500"; // Sneaky
+
   return (
     <Card
-      className="hover:border-primary/50 transition-all cursor-pointer hover:scale-105"
+      className="hover:border-primary/50 transition-all cursor-pointer hover:scale-[1.02] flex flex-col h-full overflow-hidden"
       onClick={onClick}
     >
-      <CardHeader className="pb-2">
-        <CardTitle className="text-lg text-center">{name}</CardTitle>
+      <CardHeader className="pb-2 bg-secondary/10">
+        <div className="flex justify-between items-start">
+          <CardTitle className="text-lg leading-tight">
+            {spellData.name}
+          </CardTitle>
+          <span
+            className={`text-xs font-bold uppercase ${stanceColor} border border-current px-1.5 py-0.5 rounded`}
+          >
+            {spellData.stance}
+          </span>
+        </div>
       </CardHeader>
-      <CardContent className="flex justify-center p-6 pt-0">
-        <div className="w-32 h-32 bg-secondary/20 rounded-lg flex items-center justify-center relative border border-border/50">
-          {/* Grid lines for reference */}
-          <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
-            <div className="border-r border-b border-border/10"></div>
-            <div className="border-b border-border/10"></div>
-            <div className="border-r border-border/10"></div>
-            <div></div>
+      <CardContent className="flex flex-col gap-4 p-4 flex-1">
+        <div className="w-full aspect-square bg-secondary/20 rounded-lg flex items-center justify-center relative border border-border/50 self-center max-w-[140px] group overflow-hidden">
+          {spellData.image && (
+            <img
+              src={spellData.image}
+              alt={spellData.name}
+              className="absolute inset-0 w-full h-full object-cover transition-opacity duration-200 group-hover:opacity-0"
+            />
+          )}
+
+          <div
+            className={`absolute inset-0 transition-opacity duration-200 ${spellData.image ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}
+          >
+            <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
+              <div className="border-r border-b border-border/10"></div>
+              <div className="border-b border-border/10"></div>
+              <div className="border-r border-border/10"></div>
+              <div></div>
+            </div>
+
+            <svg
+              width="100%"
+              height="100%"
+              viewBox="0 0 100 100"
+              className="overflow-visible p-4"
+            >
+              {/* Start point marker */}
+              <circle
+                cx={spellForm.points[0].x * 100}
+                cy={spellForm.points[0].y * 100}
+                r="3"
+                className="fill-green-500"
+              />
+              {/* End point marker */}
+              <circle
+                cx={spellForm.points[spellForm.points.length - 1].x * 100}
+                cy={spellForm.points[spellForm.points.length - 1].y * 100}
+                r="3"
+                className="fill-red-500"
+              />
+
+              <polyline
+                points={pointsString}
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="text-primary"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div className="space-y-2 text-sm">
+          <p className="text-muted-foreground italic text-xs min-h-[2.5em]">
+            {spellData.description}
+          </p>
+
+          <div className="grid grid-cols-2 gap-2 text-xs">
+            {spellData.baseDamage > 0 && (
+              <div className="flex items-center gap-1 font-medium">
+                <span className="text-red-500">⚔️</span> {spellData.baseDamage}{" "}
+                Dmg
+              </div>
+            )}
+            {spellData.baseHeal > 0 && (
+              <div className="flex items-center gap-1 font-medium">
+                <span className="text-green-500">❤️</span> {spellData.baseHeal}{" "}
+                Heal
+              </div>
+            )}
           </div>
 
-          <svg
-            width="100%"
-            height="100%"
-            viewBox="0 0 100 100"
-            className="overflow-visible"
-          >
-            {/* Start point marker */}
-            <circle
-              cx={spell.points[0].x * 100}
-              cy={spell.points[0].y * 100}
-              r="3"
-              className="fill-green-500"
-            />
-            {/* End point marker */}
-            <circle
-              cx={spell.points[spell.points.length - 1].x * 100}
-              cy={spell.points[spell.points.length - 1].y * 100}
-              r="3"
-              className="fill-red-500"
-            />
-
-            <polyline
-              points={pointsString}
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-primary"
-            />
-          </svg>
+          {spellData.effects.length > 0 && (
+            <div className="space-y-1">
+              <p className="text-xs font-semibold text-muted-foreground">
+                Effects:
+              </p>
+              <ul className="text-xs space-y-0.5">
+                {spellData.effects.map((effect, idx) => (
+                  <li key={idx} className="flex justify-between">
+                    <span className="capitalize">{effect.type}</span>
+                    <span className="text-muted-foreground">
+                      {effect.chance}%
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>
