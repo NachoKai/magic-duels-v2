@@ -6,10 +6,15 @@ A turn-based magical dueling game built with Next.js, React, and TypeScript. Eng
 
 - **Three Combat Stances**: Choose between Defensive, Sneaky, and Aggressive stances, each with a rock-paper-scissors advantage system
 - **Diverse Spell Arsenal**: Over 60 unique spells with various effects including damage, healing, stun, bleed, burn, and drain
+- **Drawing Spell System**: Cast spells by drawing gesture patterns on a canvas - each spell has a unique form you must replicate
+- **Gesture Recognition**: Advanced $1 Unistroke Recognizer algorithm matches your drawn gestures to spell templates with 75% similarity threshold
+- **Time-Limited Casting**: Draw spells within a time limit - adds pressure and skill to spell casting
 - **Status Effects System**: Manage bleeding, burning, healing over time, and stun effects
 - **Dice Roll Mechanics**: Spell effects have chance-based success rates, adding strategic depth and unpredictability
 - **Game Modes**: Play against CPU or challenge a friend in local multiplayer
 - **Action Log**: Track all game events and spell effects in real-time
+- **Touch & Mouse Support**: Draw spells with your finger on touch devices or mouse on desktop
+- **Visual Feedback**: Reference guides show expected spell forms, with success/failure indicators
 - **Modern UI**: Beautiful, responsive interface built with Radix UI and Tailwind CSS
 
 ## 🛠️ Tech Stack
@@ -56,9 +61,10 @@ pnpm dev
    - **Sneaky**: Beats Defensive, loses to Aggressive
    - **Aggressive**: Beats Sneaky, loses to Defensive
 3. **Select Spell**: After stance selection, choose a spell from your stance's available spells
-4. **Resolve Effects**: Watch as spells are cast, dice rolls determine effect success, and status effects are applied
-5. **Status Effects**: Bleed, burn, heal, and drain effects persist across turns
-6. **Victory**: Reduce your opponent's health to 0 to win!
+4. **Draw the Spell**: Draw the spell's gesture pattern on the canvas within the time limit to cast it
+5. **Resolve Effects**: Watch as spells are cast, dice rolls determine effect success, and status effects are applied
+6. **Status Effects**: Bleed, burn, heal, and drain effects persist across turns
+7. **Victory**: Reduce your opponent's health to 0 to win!
 
 ### Spell Effects
 
@@ -69,6 +75,24 @@ pnpm dev
 - **Burn**: Fire damage over time
 - **Drain**: Continuous health drain
 - **Status Removal**: Some spells can remove bleed, burn, or all status effects
+
+### Drawing Spell System
+
+When you select a spell, you must draw its unique gesture pattern to cast it successfully:
+
+1. **Drawing Canvas**: A full-screen canvas appears with a reference guide showing the expected spell form
+2. **Time Limit**: You have 5 seconds to complete your drawing (timer shows warning when 2 seconds remain)
+3. **Gesture Matching**: Draw the pattern with your mouse or finger - the system uses advanced gesture recognition to match your drawing
+4. **Success/Failure**:
+   - **Success**: If your gesture matches ≥75% similarity, the spell is cast successfully
+   - **Failure**: If the gesture doesn't match or time runs out, your turn is lost
+5. **Visual Feedback**:
+   - Reference guide shows the expected pattern in a semi-transparent overlay
+   - Your drawing appears in blue
+   - Success shows green feedback, failure shows red
+6. **Touch Support**: Works seamlessly on both desktop (mouse) and mobile/tablet (touch) devices
+
+Each spell has a unique form - from simple lines and circles to complex patterns like spirals, letters, and symbols. Practice makes perfect!
 
 ### Stance Advantages
 
@@ -94,9 +118,10 @@ Winning the stance phase grants you the first move in spell selection. The advan
 
 1. **Stance Phase**: Both players select their stance
 2. **Spell Phase**: Winner of stance phase selects spell first
-3. **Resolution Phase**: Spells are cast, effects are applied
-4. **Status Phase**: Status effects are processed
-5. **Turn End**: Next turn begins
+3. **Drawing Phase**: Player draws the spell gesture pattern on canvas (5 second time limit)
+4. **Resolution Phase**: If drawing succeeds, spell is cast and effects are applied
+5. **Status Phase**: Status effects are processed
+6. **Turn End**: Next turn begins
 
 ### Dice Roll System
 
