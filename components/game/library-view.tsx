@@ -64,7 +64,7 @@ export function LibraryView({ onBack }: LibraryViewProps) {
   return (
     <div className="min-h-screen bg-background p-4 flex flex-col">
       <div className="max-w-6xl mx-auto w-full flex-1 flex flex-col gap-6">
-        <div className="flex items-center justify-between border-b pb-4">
+        <div className="flex flex-col md:flex-row items-center justify-between border-b pb-4 gap-4">
           <div className="flex items-center gap-4">
             <Button
               variant="ghost"
@@ -81,7 +81,8 @@ export function LibraryView({ onBack }: LibraryViewProps) {
               </h1>
             </div>
           </div>
-          <div className="flex bg-muted/50 p-1 rounded-lg gap-1">
+
+          <div className="flex flex-wrap justify-center bg-muted/50 p-1 rounded-lg gap-1 w-full md:w-auto">
             <Button
               variant={filterStance === "All" ? "default" : "ghost"}
               size="sm"
