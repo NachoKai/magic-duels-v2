@@ -138,19 +138,30 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
 
+button,
+[type="button"],
+[type="submit"],
+[type="reset"],
+[role="button"] {
+  cursor: pointer;
+}
+
 /* Custom animations */
 @keyframes glow {
+
   0%,
   100% {
     box-shadow:
       0 0 5px currentColor,
       0 0 10px currentColor;
   }
+
   50% {
     box-shadow:
       0 0 20px currentColor,
@@ -159,23 +170,28 @@
 }
 
 @keyframes shake {
+
   0%,
   100% {
     transform: translateX(0);
   }
+
   25% {
     transform: translateX(-5px);
   }
+
   75% {
     transform: translateX(5px);
   }
 }
 
 @keyframes pulse-glow {
+
   0%,
   100% {
     opacity: 0.6;
   }
+
   50% {
     opacity: 1;
   }
