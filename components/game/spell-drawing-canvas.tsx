@@ -73,7 +73,7 @@ export function SpellDrawingCanvas({
       if (template.length === 0) return;
 
       ctx.save();
-      ctx.strokeStyle = "rgba(100, 100, 200, 0.3)";
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
       ctx.lineWidth = 2;
       ctx.setLineDash([5, 5]);
       ctx.beginPath();
