@@ -26,17 +26,20 @@ A turn-based magical dueling game built with Next.js, React, and TypeScript. Eng
 ## 📦 Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd magic-duels-v2
 ```
 
 2. Install dependencies:
+
 ```bash
 pnpm install
 ```
 
 3. Run the development server:
+
 ```bash
 pnpm dev
 ```
@@ -70,6 +73,7 @@ pnpm dev
 ### Stance Advantages
 
 Winning the stance phase grants you the first move in spell selection. The advantage system works as follows:
+
 - **Aggressive** beats **Sneaky**
 - **Sneaky** beats **Defensive**
 - **Defensive** beats **Aggressive**
@@ -97,12 +101,14 @@ Winning the stance phase grants you the first move in spell selection. The advan
 ### Dice Roll System
 
 Many spell effects have a chance-based success rate. The game uses a d100 (1-100) system where:
+
 - If the rolled number ≤ chance percentage, the effect succeeds
 - Dice rolls are displayed in the action log with format: `[DICE:rolled/needed:✓/✗:effect]`
 
 ### Status Effects
 
 Status effects persist across turns and are processed at the start of each turn:
+
 - **Bleed**: Deals damage each turn
 - **Burn**: Deals fire damage each turn
 - **Heal**: Restores health each turn
