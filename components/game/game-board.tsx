@@ -10,6 +10,7 @@ import {
   getCPUSpell,
 } from "@/lib/game-logic";
 import { type Spell, type Stance, getStanceAdvantage } from "@/lib/spells";
+import { DRAWING_TIME_LIMIT } from "@/lib/game-config";
 import { HealthBar } from "./health-bar";
 import { StanceSelector } from "./stance-selector";
 import { SpellSelector } from "./spell-selector";
@@ -36,7 +37,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
 
         const messages = [
           `--- Turn ${gameState.turn} ---`,
-          `[${stance}] Player chose ${stance}`,
+          `[${stance}] Player 1 chose ${stance}`,
           `[${cpuStance}] CPU chose ${cpuStance}`,
         ];
 
@@ -420,7 +421,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
               }
               onSelect={handleSpellSelect}
               onCastFailed={handleCastFailed}
-              drawingTimeLimit={10}
+              drawingTimeLimit={DRAWING_TIME_LIMIT}
             />
           ) : null}
         </div>

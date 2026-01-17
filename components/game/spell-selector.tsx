@@ -11,6 +11,7 @@ import { useState } from "react";
 import { Sparkles, Heart, Zap, Droplet, Flame } from "lucide-react";
 import Image from "next/image";
 import { SpellDrawingCanvas } from "./spell-drawing-canvas";
+import { DRAWING_TIME_LIMIT } from "@/lib/game-config";
 
 interface SpellSelectorProps {
   stance: Stance;
@@ -25,7 +26,7 @@ export function SpellSelector({
   onSelect,
   onCastFailed,
   disabled,
-  drawingTimeLimit = 5,
+  drawingTimeLimit = DRAWING_TIME_LIMIT,
 }: SpellSelectorProps) {
   const [selectedSpell, setSelectedSpell] = useState<Spell | null>(null);
   const [showDrawingCanvas, setShowDrawingCanvas] = useState(false);

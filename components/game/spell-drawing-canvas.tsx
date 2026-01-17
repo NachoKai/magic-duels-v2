@@ -4,8 +4,9 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { type Spell } from "@/lib/spells";
 import { type Point, getSpellForm } from "@/lib/spell-forms";
 import { matchesGesture } from "@/lib/gesture-recognition";
-import { X, Clock, CheckCircle2, XCircle, Eye, EyeOff } from "lucide-react";
+import { X, Clock, CheckCircle2, XCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { DRAWING_TIME_WARNING_THRESHOLD } from "@/lib/game-config";
 
 interface SpellDrawingCanvasProps {
   spell: Spell;
@@ -26,7 +27,6 @@ export function SpellDrawingCanvas({
   const [isDrawing, setIsDrawing] = useState(false);
   const [points, setPoints] = useState<Point[]>([]);
   const [timeRemaining, setTimeRemaining] = useState(timeLimit);
-  const [showReference, setShowReference] = useState(true);
   const [result, setResult] = useState<"success" | "failure" | null>(null);
   const [isComplete, setIsComplete] = useState(false);
 
@@ -66,8 +66,6 @@ export function SpellDrawingCanvas({
   // Draw reference guide
   const drawReference = useCallback(
     (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
-      if (!showReference) return;
-
       const template = getSpellForm(spell.id);
       if (template.length === 0) return;
 
@@ -95,7 +93,7 @@ export function SpellDrawingCanvas({
       ctx.stroke();
       ctx.restore();
     },
-    [spell.id, showReference]
+    [spell.id]
   );
 
   // Clear canvas
@@ -128,16 +126,7 @@ export function SpellDrawingCanvas({
     ctx.lineJoin = "round";
 
     drawReference(ctx, canvas);
-  }, [getContext, drawReference, showReference]);
-
-  // Redraw reference when visibility changes
-  useEffect(() => {
-    const ctx = getContext();
-    const canvas = canvasRef.current;
-    if (!ctx || !canvas) return;
-
-    clearCanvas();
-  }, [showReference, clearCanvas, getContext]);
+  }, [getContext, drawReference]);
 
   // Get point from event
   const getPointFromEvent = useCallback(
@@ -322,31 +311,13 @@ export function SpellDrawingCanvas({
       <div className="bg-card rounded-xl border border-border p-6 max-w-2xl w-full mx-4 relative">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <h2 className="text-2xl font-bold text-foreground">{spell.name}</h2>
-            <button
-              onClick={() => setShowReference(!showReference)}
-              className={cn(
-                "p-2 rounded-lg border transition-colors",
-                showReference
-                  ? "bg-primary/20 border-primary text-primary"
-                  : "bg-secondary border-border text-muted-foreground"
-              )}
-              title={showReference ? "Hide reference" : "Show reference"}
-            >
-              {showReference ? (
-                <Eye className="w-4 h-4" />
-              ) : (
-                <EyeOff className="w-4 h-4" />
-              )}
-            </button>
-          </div>
+          <h2 className="text-2xl font-bold text-foreground">{spell.name}</h2>
           <div className="flex items-center gap-4">
             {/* Timer */}
             <div
               className={cn(
                 "flex items-center gap-2 px-3 py-1.5 rounded-lg border",
-                timeRemaining <= 5
+                timeRemaining <= DRAWING_TIME_WARNING_THRESHOLD
                   ? "bg-destructive/20 border-destructive text-destructive"
                   : "bg-secondary border-border text-foreground"
               )}
