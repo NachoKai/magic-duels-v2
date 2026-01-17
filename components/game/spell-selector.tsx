@@ -10,19 +10,25 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Sparkles, Heart, Zap, Droplet, Flame } from "lucide-react";
 import Image from "next/image";
+import { SpellDrawingCanvas } from "./spell-drawing-canvas";
 
 interface SpellSelectorProps {
   stance: Stance;
   onSelect: (spell: Spell) => void;
+  onCastFailed: () => void;
   disabled?: boolean;
+  drawingTimeLimit?: number; // in seconds
 }
 
 export function SpellSelector({
   stance,
   onSelect,
+  onCastFailed,
   disabled,
+  drawingTimeLimit = 5,
 }: SpellSelectorProps) {
   const [selectedSpell, setSelectedSpell] = useState<Spell | null>(null);
+  const [showDrawingCanvas, setShowDrawingCanvas] = useState(false);
   const spells = getSpellsByStance(stance);
 
   const getStanceColor = () => {
@@ -38,13 +44,26 @@ export function SpellSelector({
 
   const handleSelect = (spell: Spell) => {
     setSelectedSpell(spell);
+    setShowDrawingCanvas(true);
   };
 
-  const handleConfirm = () => {
+  const handleDrawingSuccess = () => {
     if (selectedSpell) {
       onSelect(selectedSpell);
       setSelectedSpell(null);
+      setShowDrawingCanvas(false);
     }
+  };
+
+  const handleDrawingFailure = () => {
+    setSelectedSpell(null);
+    setShowDrawingCanvas(false);
+    onCastFailed();
+  };
+
+  const handleCloseDrawing = () => {
+    setSelectedSpell(null);
+    setShowDrawingCanvas(false);
   };
 
   return (
@@ -173,15 +192,28 @@ export function SpellSelector({
             )}
           </div>
           <button
-            onClick={handleConfirm}
+            onClick={() => {
+              setShowDrawingCanvas(true);
+            }}
             className={cn(
               "px-6 py-2 rounded-lg font-semibold transition-all cursor-pointer",
               "bg-primary text-primary-foreground hover:opacity-90"
             )}
           >
-            Cast Spell
+            Draw Spell Form
           </button>
         </div>
+      )}
+
+      {/* Drawing Canvas Overlay */}
+      {showDrawingCanvas && selectedSpell && (
+        <SpellDrawingCanvas
+          spell={selectedSpell}
+          onSuccess={handleDrawingSuccess}
+          onFailure={handleDrawingFailure}
+          onClose={handleCloseDrawing}
+          timeLimit={drawingTimeLimit}
+        />
       )}
     </div>
   );

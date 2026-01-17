@@ -267,6 +267,51 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
     [gameState, gameMode]
   );
 
+  const handleCastFailed = useCallback(() => {
+    const winner = gameState.stanceWinner;
+    if (!winner) return;
+
+    const winnerName =
+      winner === 1 ? "Player 1" : gameMode === "cpu" ? "CPU" : "Player 2";
+    const winnerStance =
+      winner === 1 ? gameState.player1Stance : gameState.player2Stance;
+
+    const messages = [
+      `[${winnerStance}] ${winnerName} failed to cast the spell!`,
+      "The gesture didn't match. Turn lost.",
+    ];
+
+    // Process status effects for both players
+    const p1Result = processStatusEffects(gameState.player1);
+    const p2Result = processStatusEffects(gameState.player2);
+
+    if (p1Result.messages.length > 0) {
+      messages.push(...p1Result.messages.map((m) => `Player 1: ${m}`));
+    }
+    if (p2Result.messages.length > 0) {
+      messages.push(
+        ...p2Result.messages.map(
+          (m) => `${gameMode === "cpu" ? "CPU" : "Player 2"}: ${m}`
+        )
+      );
+    }
+
+    setGameState((prev) => ({
+      ...prev,
+      player1: p1Result.player,
+      player2: p2Result.player,
+      phase:
+        p1Result.player.health <= 0 || p2Result.player.health <= 0
+          ? "gameover"
+          : "stance",
+      stanceWinner: null,
+      player1Stance: null,
+      player2Stance: null,
+      turn: prev.turn + 1,
+      lastAction: [...prev.lastAction, ...messages],
+    }));
+  }, [gameState, gameMode]);
+
   const handleReset = useCallback(() => {
     setGameState(createInitialState(gameMode));
   }, [gameMode]);
@@ -374,6 +419,8 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
                   : gameState.player2Stance!
               }
               onSelect={handleSpellSelect}
+              onCastFailed={handleCastFailed}
+              drawingTimeLimit={10}
             />
           ) : null}
         </div>
