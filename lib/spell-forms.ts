@@ -13,19 +13,18 @@ export interface SpellForm {
 // Generate spell forms based on the images provided
 // These are simplified representations of the wand movements
 export const spellForms: SpellForm[] = [
-  // Expelliarmus - disarming gesture (downward with outward flick)
+  // Expelliarmus - downward arrow with slight curve at bottom (canonical)
   {
     spellId: "expelliarmus",
     points: [
       { x: 0.5, y: 0.2 },
       { x: 0.5, y: 0.5 },
-      { x: 0.45, y: 0.7 },
-      { x: 0.4, y: 0.75 },
+      { x: 0.5, y: 0.7 },
+      { x: 0.45, y: 0.75 },
       { x: 0.5, y: 0.8 },
-      { x: 0.6, y: 0.75 },
     ],
   },
-  // Alohomora - circle with vertical line
+  // Alohomora - circle with vertical line through center (canonical)
   {
     spellId: "alohomora",
     points: [
@@ -34,44 +33,39 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.5 },
       { x: 0.4, y: 0.4 },
       { x: 0.5, y: 0.3 },
+      { x: 0.5, y: 0.5 },
       { x: 0.5, y: 0.7 },
     ],
   },
-  // Wingardium Leviosa - levitation arc (rising gesture)
+  // Wingardium Leviosa - wavy line: right, then down, then right (canonical)
   {
     spellId: "wingardium-leviosa",
     points: [
-      { x: 0.3, y: 0.8 },
-      { x: 0.4, y: 0.6 },
-      { x: 0.5, y: 0.4 },
-      { x: 0.6, y: 0.2 },
-      { x: 0.7, y: 0.3 },
-      { x: 0.6, y: 0.4 },
+      { x: 0.2, y: 0.5 },
+      { x: 0.4, y: 0.5 },
+      { x: 0.5, y: 0.6 },
+      { x: 0.6, y: 0.7 },
+      { x: 0.7, y: 0.6 },
+      { x: 0.8, y: 0.5 },
     ],
   },
-  // Lumos - upward arrow with small flick at top (light creation)
+  // Lumos - simple upward arrow (canonical)
   {
     spellId: "lumos",
     points: [
       { x: 0.5, y: 0.8 },
       { x: 0.5, y: 0.2 },
-      { x: 0.45, y: 0.15 },
-      { x: 0.5, y: 0.2 },
-      { x: 0.55, y: 0.15 },
     ],
   },
-  // Nox - downward arrow with extinguishing flick
+  // Nox - simple downward arrow (canonical)
   {
     spellId: "nox",
     points: [
       { x: 0.5, y: 0.2 },
       { x: 0.5, y: 0.8 },
-      { x: 0.45, y: 0.75 },
-      { x: 0.5, y: 0.8 },
-      { x: 0.55, y: 0.75 },
     ],
   },
-  // Ascendio - upward spiral (rising motion)
+  // Ascendio - curved line starting down, looping up, then straight up (canonical)
   {
     spellId: "ascendio",
     points: [
@@ -80,12 +74,11 @@ export const spellForms: SpellForm[] = [
       { x: 0.3, y: 0.6 },
       { x: 0.4, y: 0.5 },
       { x: 0.5, y: 0.4 },
-      { x: 0.6, y: 0.3 },
       { x: 0.5, y: 0.2 },
       { x: 0.5, y: 0.1 },
     ],
   },
-  // Descendio - downward spiral (falling motion)
+  // Descendio - curved line starting up, looping down, then straight down (canonical)
   {
     spellId: "descendio",
     points: [
@@ -94,57 +87,58 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.4 },
       { x: 0.6, y: 0.5 },
       { x: 0.5, y: 0.6 },
-      { x: 0.4, y: 0.7 },
       { x: 0.5, y: 0.8 },
       { x: 0.5, y: 0.9 },
     ],
   },
-  // Silencio - diagonal with hook
+  // Silencio - diagonal line with small downward hook at end (canonical)
   {
     spellId: "silencio",
     points: [
       { x: 0.3, y: 0.7 },
       { x: 0.7, y: 0.3 },
-      { x: 0.6, y: 0.4 },
+      { x: 0.65, y: 0.4 },
+      { x: 0.6, y: 0.45 },
     ],
   },
-  // Reparo - spiral
+  // Reparo - clockwise spiral from center outward (canonical)
   {
     spellId: "reparo",
     points: [
       { x: 0.5, y: 0.5 },
+      { x: 0.55, y: 0.45 },
       { x: 0.6, y: 0.4 },
-      { x: 0.5, y: 0.3 },
-      { x: 0.4, y: 0.4 },
-      { x: 0.5, y: 0.5 },
+      { x: 0.6, y: 0.5 },
       { x: 0.6, y: 0.6 },
-      { x: 0.5, y: 0.7 },
+      { x: 0.5, y: 0.6 },
       { x: 0.4, y: 0.6 },
+      { x: 0.4, y: 0.5 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.5, y: 0.4 },
     ],
   },
-  // Arresto Momentum - M shape
+  // Arresto Momentum - large M shape (canonical)
   {
     spellId: "arresto-momento",
     points: [
-      { x: 0.2, y: 0.7 },
-      { x: 0.3, y: 0.3 },
+      { x: 0.2, y: 0.8 },
+      { x: 0.3, y: 0.2 },
       { x: 0.5, y: 0.5 },
-      { x: 0.7, y: 0.3 },
-      { x: 0.8, y: 0.7 },
+      { x: 0.7, y: 0.2 },
+      { x: 0.8, y: 0.8 },
     ],
   },
-  // Finite Incantatem - horizontal line with downward slash (ending gesture)
+  // Finite Incantatem - horizontal line with small downward hook at right end (canonical)
   {
     spellId: "finite-incantatem",
     points: [
       { x: 0.2, y: 0.5 },
       { x: 0.8, y: 0.5 },
+      { x: 0.75, y: 0.55 },
       { x: 0.7, y: 0.6 },
-      { x: 0.6, y: 0.7 },
-      { x: 0.5, y: 0.8 },
     ],
   },
-  // Herbivicus - h shape
+  // Herbivicus - lowercase h shape (canonical)
   {
     spellId: "herbivicus",
     points: [
@@ -155,7 +149,7 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.8 },
     ],
   },
-  // Locomotor - 4 shape
+  // Locomotor - number 4 shape (canonical)
   {
     spellId: "locomotor",
     points: [
@@ -166,7 +160,7 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.3 },
     ],
   },
-  // Oppugno - triangle pointing right
+  // Oppugno - right-pointing triangle with line extending from right vertex (canonical)
   {
     spellId: "oppugno",
     points: [
@@ -174,10 +168,11 @@ export const spellForms: SpellForm[] = [
       { x: 0.6, y: 0.2 },
       { x: 0.6, y: 0.8 },
       { x: 0.2, y: 0.5 },
+      { x: 0.7, y: 0.5 },
       { x: 0.8, y: 0.5 },
     ],
   },
-  // Incendio - flame pattern (A shape with flickering top)
+  // Incendio - A shape without crossbar, with small hook at top (canonical)
   {
     spellId: "incendio",
     points: [
@@ -185,10 +180,9 @@ export const spellForms: SpellForm[] = [
       { x: 0.3, y: 0.2 },
       { x: 0.35, y: 0.15 },
       { x: 0.4, y: 0.2 },
-      { x: 0.5, y: 0.5 },
-      { x: 0.6, y: 0.2 },
-      { x: 0.65, y: 0.15 },
       { x: 0.7, y: 0.2 },
+      { x: 0.65, y: 0.15 },
+      { x: 0.6, y: 0.2 },
     ],
   },
   // Revelio - R shape
@@ -204,118 +198,98 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.8 },
     ],
   },
-  // Aquamenti - water flow pattern (streaming gesture)
+  // Aquamenti - wavy horizontal line (canonical)
   {
     spellId: "aquamenti",
     points: [
-      { x: 0.2, y: 0.3 },
-      { x: 0.3, y: 0.4 },
-      { x: 0.4, y: 0.3 },
-      { x: 0.5, y: 0.5 },
-      { x: 0.6, y: 0.3 },
-      { x: 0.7, y: 0.4 },
-      { x: 0.8, y: 0.3 },
-      { x: 0.8, y: 0.7 },
+      { x: 0.2, y: 0.5 },
+      { x: 0.3, y: 0.3 },
+      { x: 0.4, y: 0.5 },
+      { x: 0.5, y: 0.3 },
+      { x: 0.6, y: 0.5 },
+      { x: 0.7, y: 0.3 },
+      { x: 0.8, y: 0.5 },
     ],
   },
-  // Stupefy - lightning bolt shape (stunning effect)
+  // Stupefy - L shape rotated 90 degrees clockwise (canonical)
   {
     spellId: "stupefy",
     points: [
       { x: 0.3, y: 0.2 },
-      { x: 0.4, y: 0.35 },
-      { x: 0.35, y: 0.4 },
-      { x: 0.5, y: 0.55 },
-      { x: 0.45, y: 0.6 },
-      { x: 0.7, y: 0.8 },
+      { x: 0.3, y: 0.5 },
+      { x: 0.8, y: 0.5 },
     ],
   },
-  // Petrificus Totalus - freezing wave pattern (paralyzing spell)
+  // Petrificus Totalus - horizontal line with downward curve at left, upward at right (canonical)
   {
     spellId: "petrificus-totalus",
     points: [
       { x: 0.2, y: 0.5 },
-      { x: 0.35, y: 0.35 },
-      { x: 0.5, y: 0.4 },
-      { x: 0.65, y: 0.35 },
+      { x: 0.25, y: 0.55 },
+      { x: 0.3, y: 0.5 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.7, y: 0.5 },
+      { x: 0.75, y: 0.45 },
       { x: 0.8, y: 0.5 },
-      { x: 0.65, y: 0.65 },
-      { x: 0.5, y: 0.6 },
-      { x: 0.35, y: 0.65 },
-      { x: 0.2, y: 0.5 },
     ],
   },
-  // Protego - shield shape (upward arc with horizontal line at top)
+  // Protego - upward arrow with slight shield curve at top (canonical-inspired, unique from Lumos)
   {
     spellId: "protego",
     points: [
       { x: 0.5, y: 0.8 },
-      { x: 0.4, y: 0.6 },
-      { x: 0.3, y: 0.4 },
-      { x: 0.4, y: 0.3 },
+      { x: 0.5, y: 0.3 },
       { x: 0.5, y: 0.2 },
-      { x: 0.6, y: 0.3 },
-      { x: 0.7, y: 0.4 },
-      { x: 0.6, y: 0.6 },
-      { x: 0.5, y: 0.8 },
+      { x: 0.45, y: 0.25 },
+      { x: 0.5, y: 0.2 },
+      { x: 0.55, y: 0.25 },
     ],
   },
-  // Reducto - destruction pattern (diagonal with expanding circles)
+  // Reducto - diagonal line with small circle at bottom-right end (canonical)
   {
     spellId: "reducto",
     points: [
       { x: 0.2, y: 0.2 },
       { x: 0.8, y: 0.8 },
-      { x: 0.7, y: 0.7 },
-      { x: 0.75, y: 0.65 },
-      { x: 0.8, y: 0.7 },
       { x: 0.75, y: 0.75 },
-      { x: 0.7, y: 0.8 },
-      { x: 0.75, y: 0.85 },
+      { x: 0.8, y: 0.8 },
+      { x: 0.85, y: 0.85 },
     ],
   },
-  // Flipendo - curved push pattern (powerful knockback)
+  // Flipendo - horizontal line with arrow pointing right at end (canonical)
   {
     spellId: "flipendo",
     points: [
-      { x: 0.3, y: 0.3 },
-      { x: 0.4, y: 0.4 },
-      { x: 0.5, y: 0.5 },
-      { x: 0.6, y: 0.6 },
-      { x: 0.7, y: 0.7 },
-      { x: 0.8, y: 0.6 },
-      { x: 0.85, y: 0.5 },
+      { x: 0.2, y: 0.5 },
+      { x: 0.8, y: 0.5 },
+      { x: 0.7, y: 0.4 },
+      { x: 0.8, y: 0.5 },
+      { x: 0.7, y: 0.6 },
     ],
   },
-  // Riddikulus - wavy smile pattern with loops (ridiculous/amusing)
+  // Riddikulus - horizontal line with two small downward hooks (canonical)
   {
     spellId: "riddikulus",
     points: [
       { x: 0.2, y: 0.5 },
-      { x: 0.3, y: 0.4 },
-      { x: 0.35, y: 0.35 },
-      { x: 0.4, y: 0.4 },
-      { x: 0.5, y: 0.35 },
-      { x: 0.6, y: 0.4 },
-      { x: 0.65, y: 0.35 },
-      { x: 0.7, y: 0.4 },
       { x: 0.8, y: 0.5 },
-      { x: 0.7, y: 0.6 },
-      { x: 0.5, y: 0.65 },
       { x: 0.3, y: 0.6 },
+      { x: 0.7, y: 0.6 },
     ],
   },
-  // Levicorpus - J shape
+  // Levicorpus - stylized J shape: vertical line, loop at bottom, horizontal line right (canonical)
   {
     spellId: "levicorpus",
     points: [
       { x: 0.3, y: 0.2 },
       { x: 0.3, y: 0.7 },
       { x: 0.3, y: 0.8 },
+      { x: 0.4, y: 0.85 },
+      { x: 0.5, y: 0.8 },
       { x: 0.6, y: 0.8 },
     ],
   },
-  // Episkey - healing cross pattern (circle with cross inside)
+  // Episkey - simple circle (canonical)
   {
     spellId: "episkey",
     points: [
@@ -324,13 +298,9 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.5 },
       { x: 0.4, y: 0.4 },
       { x: 0.5, y: 0.3 },
-      { x: 0.5, y: 0.5 },
-      { x: 0.5, y: 0.7 },
-      { x: 0.3, y: 0.5 },
-      { x: 0.7, y: 0.5 },
     ],
   },
-  // Diffindo - N shape
+  // Diffindo - N shape (canonical)
   {
     spellId: "diffindo",
     points: [
@@ -340,25 +310,20 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.2 },
     ],
   },
-  // Impedimenta - zigzag barrier pattern
+  // Impedimenta - simple horizontal line (canonical)
   {
     spellId: "impedimenta",
     points: [
-      { x: 0.2, y: 0.4 },
-      { x: 0.35, y: 0.6 },
-      { x: 0.5, y: 0.4 },
-      { x: 0.65, y: 0.6 },
-      { x: 0.8, y: 0.4 },
+      { x: 0.2, y: 0.5 },
+      { x: 0.8, y: 0.5 },
     ],
   },
-  // Confringo - explosive zigzag (blasting curse)
+  // Confringo - Z shape (canonical)
   {
     spellId: "confringo",
     points: [
       { x: 0.2, y: 0.2 },
       { x: 0.8, y: 0.2 },
-      { x: 0.3, y: 0.5 },
-      { x: 0.7, y: 0.5 },
       { x: 0.2, y: 0.8 },
       { x: 0.8, y: 0.8 },
     ],
@@ -396,14 +361,18 @@ export const spellForms: SpellForm[] = [
       { x: 0.3, y: 0.8 },
     ],
   },
-  // Immobulus - X shape
+  // Immobulus - freezing cross pattern (immobilizing gesture)
   {
     spellId: "immobulus",
     points: [
       { x: 0.2, y: 0.2 },
+      { x: 0.5, y: 0.5 },
       { x: 0.8, y: 0.8 },
+      { x: 0.5, y: 0.5 },
       { x: 0.2, y: 0.8 },
+      { x: 0.5, y: 0.5 },
       { x: 0.8, y: 0.2 },
+      { x: 0.5, y: 0.5 },
     ],
   },
   // Rictusempra - tickling spiral pattern (amusing spell)
@@ -449,15 +418,172 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.85 },
     ],
   },
-  // Mimblewimble - S shape
+  // Mimblewimble - curved line starting left, going up, then curving down and right (canonical)
   {
     spellId: "mimblewimble",
     points: [
-      { x: 0.3, y: 0.2 },
-      { x: 0.5, y: 0.3 },
+      { x: 0.2, y: 0.5 },
+      { x: 0.3, y: 0.3 },
+      { x: 0.5, y: 0.2 },
+      { x: 0.7, y: 0.3 },
+      { x: 0.8, y: 0.5 },
+      { x: 0.7, y: 0.7 },
+      { x: 0.5, y: 0.8 },
+    ],
+  },
+  // Vulnera Sanentur - powerful healing pattern (strong heal spell - unique)
+  {
+    spellId: "vulnera-sanentur",
+    points: [
+      { x: 0.5, y: 0.2 },
+      { x: 0.4, y: 0.3 },
+      { x: 0.3, y: 0.4 },
+      { x: 0.4, y: 0.5 },
+      { x: 0.5, y: 0.6 },
+      { x: 0.6, y: 0.5 },
+      { x: 0.7, y: 0.4 },
+      { x: 0.6, y: 0.3 },
+      { x: 0.5, y: 0.2 },
+      { x: 0.5, y: 0.4 },
+      { x: 0.5, y: 0.6 },
+      { x: 0.5, y: 0.8 },
       { x: 0.3, y: 0.5 },
+      { x: 0.7, y: 0.5 },
+    ],
+  },
+  // Glacius - freezing pattern (powerful 13 damage spell)
+  {
+    spellId: "glacius",
+    points: [
+      { x: 0.5, y: 0.2 },
+      { x: 0.4, y: 0.3 },
+      { x: 0.3, y: 0.4 },
+      { x: 0.4, y: 0.5 },
+      { x: 0.5, y: 0.6 },
+      { x: 0.6, y: 0.5 },
+      { x: 0.7, y: 0.4 },
+      { x: 0.6, y: 0.3 },
+      { x: 0.5, y: 0.2 },
+      { x: 0.5, y: 0.8 },
+    ],
+  },
+  // Blue Fire Spell - blue flame pattern (powerful 10 damage spell)
+  {
+    spellId: "blue-fire-spell",
+    points: [
+      { x: 0.5, y: 0.8 },
+      { x: 0.4, y: 0.6 },
+      { x: 0.35, y: 0.4 },
+      { x: 0.4, y: 0.3 },
+      { x: 0.5, y: 0.25 },
+      { x: 0.6, y: 0.3 },
+      { x: 0.65, y: 0.4 },
+      { x: 0.6, y: 0.6 },
+      { x: 0.5, y: 0.8 },
+      { x: 0.45, y: 0.7 },
+      { x: 0.55, y: 0.7 },
+    ],
+  },
+  // Waddiwasi - projectile pattern (powerful 14 damage spell)
+  {
+    spellId: "waddiwasi",
+    points: [
+      { x: 0.2, y: 0.5 },
+      { x: 0.3, y: 0.4 },
+      { x: 0.4, y: 0.35 },
+      { x: 0.5, y: 0.3 },
+      { x: 0.6, y: 0.35 },
+      { x: 0.7, y: 0.4 },
+      { x: 0.8, y: 0.5 },
+      { x: 0.75, y: 0.6 },
+      { x: 0.7, y: 0.7 },
+    ],
+  },
+  // Windy Spell - wind gust pattern (powerful 13 damage spell)
+  {
+    spellId: "windy-spell",
+    points: [
+      { x: 0.3, y: 0.5 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.5, y: 0.35 },
+      { x: 0.6, y: 0.4 },
+      { x: 0.7, y: 0.5 },
+      { x: 0.65, y: 0.6 },
+      { x: 0.5, y: 0.65 },
+      { x: 0.35, y: 0.6 },
+      { x: 0.3, y: 0.5 },
+      { x: 0.5, y: 0.3 },
       { x: 0.5, y: 0.7 },
-      { x: 0.7, y: 0.8 },
+    ],
+  },
+  // Pus Squirting Hex - disgusting pattern (powerful 14 damage spell)
+  {
+    spellId: "pus-squirting-hex",
+    points: [
+      { x: 0.5, y: 0.3 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.6, y: 0.4 },
+      { x: 0.5, y: 0.3 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.3, y: 0.6 },
+      { x: 0.5, y: 0.7 },
+      { x: 0.7, y: 0.6 },
+      { x: 0.5, y: 0.8 },
+    ],
+  },
+  // Arrow Shooting - arrow pattern (powerful 13 damage spell)
+  {
+    spellId: "arrow-shooting",
+    points: [
+      { x: 0.2, y: 0.5 },
+      { x: 0.3, y: 0.45 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.5, y: 0.35 },
+      { x: 0.6, y: 0.3 },
+      { x: 0.7, y: 0.25 },
+      { x: 0.8, y: 0.2 },
+      { x: 0.75, y: 0.3 },
+      { x: 0.7, y: 0.4 },
+      { x: 0.65, y: 0.5 },
+    ],
+  },
+  // Avifors - bird transformation pattern (powerful 15 damage spell)
+  {
+    spellId: "avifors",
+    points: [
+      { x: 0.3, y: 0.5 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.5, y: 0.35 },
+      { x: 0.6, y: 0.4 },
+      { x: 0.7, y: 0.5 },
+      { x: 0.65, y: 0.6 },
+      { x: 0.5, y: 0.65 },
+      { x: 0.35, y: 0.6 },
+      { x: 0.3, y: 0.5 },
+      { x: 0.5, y: 0.3 },
+      { x: 0.5, y: 0.7 },
+      { x: 0.2, y: 0.5 },
+      { x: 0.8, y: 0.5 },
+    ],
+  },
+  // Insect Hex - swarm pattern (powerful 12 damage spell)
+  {
+    spellId: "insect-hex",
+    points: [
+      { x: 0.5, y: 0.5 },
+      { x: 0.4, y: 0.4 },
+      { x: 0.3, y: 0.5 },
+      { x: 0.4, y: 0.6 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.6, y: 0.4 },
+      { x: 0.7, y: 0.5 },
+      { x: 0.6, y: 0.6 },
+      { x: 0.5, y: 0.5 },
+      { x: 0.35, y: 0.35 },
+      { x: 0.65, y: 0.65 },
+      { x: 0.35, y: 0.65 },
+      { x: 0.65, y: 0.35 },
     ],
   },
 ];
