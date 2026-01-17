@@ -28,19 +28,15 @@ export function LibraryView({ onBack }: LibraryViewProps) {
   };
 
   const handleSpellClick = (spellForm: SpellForm) => {
-    // Find the full spell data
     const spellData = allSpellsData.find((s) => s.id === spellForm.spellId);
     if (spellData) {
       setSelectedSpell(spellData);
     } else {
-      // Fallback if spell data is missing (should verify if this is needed, but safe for now)
-      // eslint-disable-next-line
       console.warn(`Spell data not found for id: ${spellForm.spellId}`);
-      // Create a dummy spell object for practice if needed
       const dummySpell: Spell = {
         id: spellForm.spellId,
         name: formatSpellName(spellForm.spellId),
-        stance: "Defensive", // Default
+        stance: "Defensive",
         baseDamage: 0,
         baseHeal: 0,
         effects: [],
@@ -174,7 +170,6 @@ function SpellCard({
   spellData: Spell;
   onClick: () => void;
 }) {
-  // Convert normalized points (0-1) to SVG coordinates (0-100)
   const pointsString = spellForm.points
     .map((p) => `${p.x * 100},${p.y * 100}`)
     .join(" ");

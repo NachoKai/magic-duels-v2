@@ -34,6 +34,7 @@ export default [
         clearTimeout: "readonly",
         setInterval: "readonly",
         clearInterval: "readonly",
+        console: "readonly",
       },
     },
     plugins: {
@@ -58,6 +59,7 @@ export default [
         },
       ],
       "@typescript-eslint/no-explicit-any": "warn",
+      "no-console": ["error", { allow: ["warn", "error", "info"] }],
     },
     settings: {
       react: {

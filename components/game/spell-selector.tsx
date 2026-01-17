@@ -19,7 +19,7 @@ interface SpellSelectorProps {
   onSelect: (spell: Spell) => void;
   onCastFailed: () => void;
   disabled?: boolean;
-  drawingTimeLimit?: number; // in seconds
+  drawingTimeLimit?: number;
 }
 
 export function SpellSelector({

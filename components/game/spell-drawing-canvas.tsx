@@ -16,7 +16,7 @@ interface SpellDrawingCanvasProps {
   onSuccess: () => void;
   onFailure: () => void;
   onClose: () => void;
-  timeLimit: number; // in seconds
+  timeLimit: number;
 }
 
 export function SpellDrawingCanvas({
@@ -42,7 +42,6 @@ export function SpellDrawingCanvas({
     }, 1500);
   }, [result, isComplete, onFailure]);
 
-  // Timer effect
   useEffect(() => {
     if (isComplete || result !== null) return;
 
@@ -59,14 +58,12 @@ export function SpellDrawingCanvas({
     return () => clearInterval(interval);
   }, [isComplete, result, handleTimeout]);
 
-  // Get canvas context
   const getContext = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return null;
     return canvas.getContext("2d");
   }, []);
 
-  // Draw reference guide
   const drawReference = useCallback(
     (ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement) => {
       const template = getSpellForm(spell.id);
@@ -99,7 +96,6 @@ export function SpellDrawingCanvas({
     [spell.id]
   );
 
-  // Clear canvas
   const clearCanvas = useCallback(() => {
     const ctx = getContext();
     if (!ctx) return;
@@ -109,7 +105,6 @@ export function SpellDrawingCanvas({
     drawReference(ctx, canvas);
   }, [getContext, drawReference]);
 
-  // Initialize canvas
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -117,12 +112,10 @@ export function SpellDrawingCanvas({
     const ctx = getContext();
     if (!ctx) return;
 
-    // Set canvas size
     const rect = canvas.getBoundingClientRect();
     canvas.width = rect.width;
     canvas.height = rect.height;
 
-    // Set drawing styles
     ctx.strokeStyle = "#3b82f6";
     ctx.lineWidth = 4;
     ctx.lineCap = "round";
@@ -131,7 +124,6 @@ export function SpellDrawingCanvas({
     drawReference(ctx, canvas);
   }, [getContext, drawReference]);
 
-  // Get point from event
   const getPointFromEvent = useCallback(
     (
       e:
@@ -162,7 +154,6 @@ export function SpellDrawingCanvas({
     []
   );
 
-  // Draw point
   const drawPoint = useCallback(
     (point: Point, prevPoint?: Point) => {
       const ctx = getContext();
@@ -189,7 +180,6 @@ export function SpellDrawingCanvas({
     [getContext]
   );
 
-  // Start drawing
   const handleStart = useCallback(
     (
       e:
@@ -209,7 +199,6 @@ export function SpellDrawingCanvas({
     [isComplete, result, getPointFromEvent, drawPoint]
   );
 
-  // Continue drawing
   const handleMove = useCallback(
     (
       e:
@@ -229,20 +218,17 @@ export function SpellDrawingCanvas({
     [isDrawing, isComplete, result, getPointFromEvent, drawPoint, points]
   );
 
-  // Stop drawing and check
   const handleEnd = useCallback(() => {
     if (!isDrawing || isComplete || result !== null) return;
 
     setIsDrawing(false);
 
     if (points.length < 3) {
-      // Too few points, clear and restart
       setPoints([]);
       clearCanvas();
       return;
     }
 
-    // Check gesture
     const template = getSpellForm(spell.id);
     const isMatch = matchesGesture(
       points,
@@ -253,7 +239,6 @@ export function SpellDrawingCanvas({
     setIsComplete(true);
     setResult(isMatch ? "success" : "failure");
 
-    // Draw result feedback
     const ctx = getContext();
     const canvas = canvasRef.current;
     if (ctx && canvas) {
@@ -262,7 +247,6 @@ export function SpellDrawingCanvas({
       ctx.lineWidth = 6;
       ctx.setLineDash([]);
 
-      // Redraw the path with result color
       ctx.beginPath();
       for (let i = 0; i < points.length; i++) {
         const point = points[i];
@@ -279,7 +263,6 @@ export function SpellDrawingCanvas({
       ctx.restore();
     }
 
-    // Call callback after delay
     setTimeout(() => {
       if (isMatch) {
         onSuccess();
@@ -299,7 +282,6 @@ export function SpellDrawingCanvas({
     onFailure,
   ]);
 
-  // Prevent scrolling on touch
   useEffect(() => {
     const preventScroll = (e: TouchEvent) => {
       if (e.target === canvasRef.current) {
@@ -316,11 +298,9 @@ export function SpellDrawingCanvas({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
       <div className="bg-card rounded-xl border border-border p-6 max-w-2xl w-full mx-4 relative">
-        {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold text-foreground">{spell.name}</h2>
           <div className="flex items-center gap-4">
-            {/* Timer */}
             <div
               className={cn(
                 "flex items-center gap-2 px-3 py-1.5 rounded-lg border",
@@ -342,7 +322,6 @@ export function SpellDrawingCanvas({
           </div>
         </div>
 
-        {/* Result Feedback */}
         {result && (
           <div
             className={cn(
@@ -375,7 +354,6 @@ export function SpellDrawingCanvas({
           </div>
         )}
 
-        {/* Canvas */}
         <div className="relative border-2 border-border rounded-lg bg-background overflow-hidden">
           <canvas
             ref={canvasRef}
@@ -390,7 +368,6 @@ export function SpellDrawingCanvas({
           />
         </div>
 
-        {/* Instructions */}
         <div className="mt-4 text-sm text-muted-foreground text-center">
           {!isComplete ? (
             <p>Match the reference guide to cast the spell.</p>

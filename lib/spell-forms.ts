@@ -1,19 +1,14 @@
-// Point interface for gesture recognition
 export interface Point {
   x: number;
   y: number;
 }
 
-// Spell form template - normalized points representing the gesture
 export interface SpellForm {
   spellId: string;
   points: Point[];
 }
 
-// Generate spell forms based on the images provided
-// These are simplified representations of the wand movements
 export const spellForms: SpellForm[] = [
-  // Expelliarmus - downward arrow with slight curve at bottom (canonical)
   {
     spellId: "expelliarmus",
     points: [
@@ -24,7 +19,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.8 },
     ],
   },
-  // Alohomora - circle with vertical line through center (canonical)
   {
     spellId: "alohomora",
     points: [
@@ -37,7 +31,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.7 },
     ],
   },
-  // Wingardium Leviosa - wavy line: right, then down, then right (canonical)
   {
     spellId: "wingardium-leviosa",
     points: [
@@ -49,7 +42,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.5 },
     ],
   },
-  // Lumos - simple upward arrow (canonical)
   {
     spellId: "lumos",
     points: [
@@ -57,7 +49,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.2 },
     ],
   },
-  // Nox - simple downward arrow (canonical)
   {
     spellId: "nox",
     points: [
@@ -65,7 +56,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.8 },
     ],
   },
-  // Ascendio - curved line starting down, looping up, then straight up (canonical)
   {
     spellId: "ascendio",
     points: [
@@ -78,7 +68,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.1 },
     ],
   },
-  // Descendio - curved line starting up, looping down, then straight down (canonical)
   {
     spellId: "descendio",
     points: [
@@ -91,7 +80,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.9 },
     ],
   },
-  // Silencio - diagonal line with small downward hook at end (canonical)
   {
     spellId: "silencio",
     points: [
@@ -101,7 +89,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.6, y: 0.45 },
     ],
   },
-  // Reparo - clockwise spiral from center outward (canonical)
   {
     spellId: "reparo",
     points: [
@@ -117,7 +104,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.4 },
     ],
   },
-  // Arresto Momentum - large M shape (canonical)
   {
     spellId: "arresto-momento",
     points: [
@@ -128,7 +114,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.8 },
     ],
   },
-  // Finite Incantatem - horizontal line with small downward hook at right end (canonical)
   {
     spellId: "finite-incantatem",
     points: [
@@ -138,7 +123,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.6 },
     ],
   },
-  // Herbivicus - lowercase h shape (canonical)
   {
     spellId: "herbivicus",
     points: [
@@ -149,7 +133,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.8 },
     ],
   },
-  // Locomotor - number 4 shape (canonical)
   {
     spellId: "locomotor",
     points: [
@@ -160,7 +143,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.3 },
     ],
   },
-  // Oppugno - right-pointing triangle with line extending from right vertex (canonical)
   {
     spellId: "oppugno",
     points: [
@@ -172,7 +154,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.5 },
     ],
   },
-  // Incendio - A shape without crossbar, with small hook at top (canonical)
   {
     spellId: "incendio",
     points: [
@@ -185,7 +166,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.6, y: 0.2 },
     ],
   },
-  // Revelio - R shape
   {
     spellId: "revelio",
     points: [
@@ -198,7 +178,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.8 },
     ],
   },
-  // Aquamenti - wavy horizontal line (canonical)
   {
     spellId: "aquamenti",
     points: [
@@ -211,7 +190,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.5 },
     ],
   },
-  // Stupefy - L shape rotated 90 degrees clockwise (canonical)
   {
     spellId: "stupefy",
     points: [
@@ -220,7 +198,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.5 },
     ],
   },
-  // Petrificus Totalus - horizontal line with downward curve at left, upward at right (canonical)
   {
     spellId: "petrificus-totalus",
     points: [
@@ -233,7 +210,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.5 },
     ],
   },
-  // Protego - upward arrow with slight shield curve at top (canonical-inspired, unique from Lumos)
   {
     spellId: "protego",
     points: [
@@ -245,7 +221,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.55, y: 0.25 },
     ],
   },
-  // Reducto - diagonal line with small circle at bottom-right end (canonical)
   {
     spellId: "reducto",
     points: [
@@ -256,7 +231,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.85, y: 0.85 },
     ],
   },
-  // Flipendo - horizontal line with arrow pointing right at end (canonical)
   {
     spellId: "flipendo",
     points: [
@@ -267,7 +241,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.6 },
     ],
   },
-  // Riddikulus - horizontal line with two small downward hooks (canonical)
   {
     spellId: "riddikulus",
     points: [
@@ -277,7 +250,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.6 },
     ],
   },
-  // Levicorpus - stylized J shape: vertical line, loop at bottom, horizontal line right (canonical)
   {
     spellId: "levicorpus",
     points: [
@@ -289,7 +261,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.6, y: 0.8 },
     ],
   },
-  // Episkey - simple circle (canonical)
   {
     spellId: "episkey",
     points: [
@@ -300,7 +271,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.3 },
     ],
   },
-  // Diffindo - N shape (canonical)
   {
     spellId: "diffindo",
     points: [
@@ -310,7 +280,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.2 },
     ],
   },
-  // Impedimenta - simple horizontal line (canonical)
   {
     spellId: "impedimenta",
     points: [
@@ -318,7 +287,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.5 },
     ],
   },
-  // Confringo - Z shape (canonical)
   {
     spellId: "confringo",
     points: [
@@ -328,7 +296,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.8 },
     ],
   },
-  // Bombarda - explosion pattern (star-like burst, no repeated center)
   {
     spellId: "bombarda",
     points: [
@@ -344,7 +311,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.2 },
     ],
   },
-  // Depulso - banishing wave (powerful spell - more complex, no repeated center)
   {
     spellId: "depulso",
     points: [
@@ -361,7 +327,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.3, y: 0.8 },
     ],
   },
-  // Immobulus - freezing cross pattern (immobilizing gesture)
   {
     spellId: "immobulus",
     points: [
@@ -375,7 +340,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.5 },
     ],
   },
-  // Rictusempra - tickling spiral pattern (amusing spell)
   {
     spellId: "rictusempra",
     points: [
@@ -390,7 +354,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.5 },
     ],
   },
-  // Incarcerous - infinity symbol
   {
     spellId: "incarcerous",
     points: [
@@ -401,7 +364,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.3, y: 0.5 },
     ],
   },
-  // Meteolojinx - weather pattern (cloud with lightning strike)
   {
     spellId: "meteolojinx",
     points: [
@@ -418,7 +380,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.85 },
     ],
   },
-  // Mimblewimble - curved line starting left, going up, then curving down and right (canonical)
   {
     spellId: "mimblewimble",
     points: [
@@ -431,7 +392,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.8 },
     ],
   },
-  // Vulnera Sanentur - powerful healing pattern (strong heal spell - unique)
   {
     spellId: "vulnera-sanentur",
     points: [
@@ -451,7 +411,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.5 },
     ],
   },
-  // Glacius - freezing pattern (powerful 13 damage spell)
   {
     spellId: "glacius",
     points: [
@@ -467,7 +426,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.8 },
     ],
   },
-  // Blue Fire Spell - blue flame pattern (powerful 10 damage spell)
   {
     spellId: "blue-fire-spell",
     points: [
@@ -484,7 +442,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.55, y: 0.7 },
     ],
   },
-  // Waddiwasi - projectile pattern (powerful 14 damage spell)
   {
     spellId: "waddiwasi",
     points: [
@@ -499,7 +456,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.7 },
     ],
   },
-  // Windy Spell - wind gust pattern (powerful 13 damage spell)
   {
     spellId: "windy-spell",
     points: [
@@ -516,7 +472,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.7 },
     ],
   },
-  // Pus Squirting Hex - disgusting pattern (powerful 14 damage spell)
   {
     spellId: "pus-squirting-hex",
     points: [
@@ -532,7 +487,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.8 },
     ],
   },
-  // Arrow Shooting - arrow pattern (powerful 13 damage spell)
   {
     spellId: "arrow-shooting",
     points: [
@@ -548,7 +502,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.65, y: 0.5 },
     ],
   },
-  // Avifors - bird transformation pattern (powerful 15 damage spell)
   {
     spellId: "avifors",
     points: [
@@ -567,7 +520,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.5 },
     ],
   },
-  // Insect Hex - swarm pattern (powerful 12 damage spell)
   {
     spellId: "insect-hex",
     points: [
@@ -586,8 +538,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.65, y: 0.35 },
     ],
   },
-  // NEW DEFENSIVE SPELLS
-  // Blood Replenishing - Drop shape
   {
     spellId: "blood-replenishing",
     points: [
@@ -598,7 +548,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.7 },
     ],
   },
-  // Wiggenweld - Plus sign
   {
     spellId: "wiggenweld",
     points: [
@@ -608,7 +557,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.5 },
     ],
   },
-  // Hot Air Charm - Rising wavy lines (Heat)
   {
     spellId: "hot-air-charm",
     points: [
@@ -620,7 +568,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.2 },
     ],
   },
-  // Leek Jinx - Leek shape (stalk with leaves)
   {
     spellId: "leek-jinx",
     points: [
@@ -631,7 +578,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.1 },
     ],
   },
-  // Tarantallegra - Dancing legs (zig-zag)
   {
     spellId: "tarantallegra",
     points: [
@@ -644,7 +590,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.8 },
     ],
   },
-  // Diminuendo - Shrinking box
   {
     spellId: "diminuendo",
     points: [
@@ -660,7 +605,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.4, y: 0.4 },
     ],
   },
-  // Brachiabindo - Binding rope loops
   {
     spellId: "brachiabindo",
     points: [
@@ -672,7 +616,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.7 },
     ],
   },
-  // Fulgari - Lightning bolt with bind
   {
     spellId: "fulgari",
     points: [
@@ -683,7 +626,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.8 },
     ],
   },
-  // Slugulus Eructo - Spiral out (vomiting slug motion)
   {
     spellId: "slugulus-eructo",
     points: [
@@ -697,8 +639,6 @@ export const spellForms: SpellForm[] = [
     ],
   },
 
-  // NEW SNEAKY SPELLS
-  // Giant Dungbomb - Explosion cloud
   {
     spellId: "giant-dungbomb",
     points: [
@@ -711,7 +651,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.4, y: 0.4 },
     ],
   },
-  // Nebulus - Fog swirl
   {
     spellId: "nebulus",
     points: [
@@ -722,7 +661,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.6 },
     ],
   },
-  // Bewitched Sleep - Z shape
   {
     spellId: "bewitched-sleep",
     points: [
@@ -732,7 +670,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.7 },
     ],
   },
-  // Obscuro - Blindfold line
   {
     spellId: "obscuro",
     points: [
@@ -743,7 +680,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.2, y: 0.4 },
     ],
   },
-  // Pimple Jinx - Spots
   {
     spellId: "pimple-jinx",
     points: [
@@ -758,7 +694,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.75, y: 0.7 },
     ],
   },
-  // Hair Thickening Charm - Hair strands
   {
     spellId: "hair-thickening-charm",
     points: [
@@ -772,7 +707,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.6, y: 0.8 },
     ],
   },
-  // Flagrante - Fire flicker
   {
     spellId: "flagrante",
     points: [
@@ -783,7 +717,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.8 },
     ],
   },
-  // Tickling Hex - Feather shape
   {
     spellId: "tickling-hex",
     points: [
@@ -795,7 +728,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.5 },
     ],
   },
-  // Jelly Legs Jinx - Wobbly legs
   {
     spellId: "jelly-legs-jinx",
     points: [
@@ -807,7 +739,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.8 },
     ],
   },
-  // Babbling Curse - Speech bubble loop
   {
     spellId: "babbling-curse",
     points: [
@@ -819,7 +750,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.3, y: 0.7 },
     ],
   },
-  // Cantis - Music note
   {
     spellId: "cantis",
     points: [
@@ -831,7 +761,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.4 },
     ],
   },
-  // Ebublio Jinx - Bubbles
   {
     spellId: "ebublio-jinx",
     points: [
@@ -848,8 +777,6 @@ export const spellForms: SpellForm[] = [
     ],
   },
 
-  // NEW AGGRESSIVE SPELLS
-  // Melofors Jinx - Pumpkin shape
   {
     spellId: "melofors-jinx",
     points: [
@@ -863,7 +790,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.2 },
     ],
   },
-  // Bat-Bogey Hex - Bat wings
   {
     spellId: "bat-bogey-hex",
     points: [
@@ -876,7 +802,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.4 },
     ],
   },
-  // Fanged Frisbee - Spinning disc
   {
     spellId: "fanged-frisbee",
     points: [
@@ -890,7 +815,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.4, y: 0.4 },
     ],
   },
-  // Stick Fast Hex - Glue puddle
   {
     spellId: "stick-fast-hex",
     points: [
@@ -901,7 +825,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.3, y: 0.7 },
     ],
   },
-  // Throw Vial - Arced throw
   {
     spellId: "throw-vial",
     points: [
@@ -912,7 +835,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.7 },
     ],
   },
-  // Cornflake Skin Jinx - Flakes
   {
     spellId: "cornflake-skin-jinx",
     points: [
@@ -928,7 +850,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.6 },
     ],
   },
-  // Bee-Sting Jinx - B shape / Flight path
   {
     spellId: "bee-sting-jinx",
     points: [
@@ -940,7 +861,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.3, y: 0.8 },
     ],
   },
-  // Relashio - Burst open
   {
     spellId: "relashio",
     points: [
@@ -954,7 +874,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.7 },
     ],
   },
-  // Throw Teacup - Cup shape
   {
     spellId: "throw-teacup",
     points: [
@@ -968,7 +887,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.7, y: 0.6 },
     ],
   },
-  // Anteoculatia - Antlers
   {
     spellId: "anteoculatia",
     points: [
@@ -984,7 +902,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.4 },
     ],
   },
-  // Pepper Breath - Spreading breath
   {
     spellId: "pepper-breath",
     points: [
@@ -997,7 +914,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.5, y: 0.7 },
     ],
   },
-  // Vaulting Charm - Jump arc
   {
     spellId: "vaulting-charm",
     points: [
@@ -1008,7 +924,6 @@ export const spellForms: SpellForm[] = [
       { x: 0.8, y: 0.8 },
     ],
   },
-  // Mobilicorpus - Puppet strings
   {
     spellId: "mobilicorpus",
     points: [
@@ -1022,9 +937,7 @@ export const spellForms: SpellForm[] = [
   },
 ];
 
-// Default forms for spells not explicitly defined (simple patterns)
 const defaultForms: Record<string, Point[]> = {
-  // Simple patterns for remaining spells
   vertical: [
     { x: 0.5, y: 0.2 },
     { x: 0.5, y: 0.8 },
@@ -1052,12 +965,10 @@ const defaultForms: Record<string, Point[]> = {
   ],
 };
 
-// Get spell form by spell ID
 export function getSpellForm(spellId: string): Point[] {
   const form = spellForms.find((f) => f.spellId === spellId);
   if (form) return form.points;
 
-  // Generate a default form based on spell name hash for consistency
   const hash = spellId
     .split("")
     .reduce((acc, char) => acc + char.charCodeAt(0), 0);
@@ -1065,7 +976,6 @@ export function getSpellForm(spellId: string): Point[] {
   return patterns[hash % patterns.length];
 }
 
-// Get all spell forms for reference
 export function getAllSpellForms(): SpellForm[] {
   return spellForms;
 }

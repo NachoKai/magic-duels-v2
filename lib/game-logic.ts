@@ -133,13 +133,11 @@ export const applySpell = (
   const newCasterEffects = [...caster.statusEffects];
   let newTargetStun = target.isStunned;
 
-  // Apply base damage
   if (spell.baseDamage > 0) {
     newTargetHealth -= spell.baseDamage;
     messages.push(`${spell.name} deals ${spell.baseDamage} damage!`);
   }
 
-  // Apply base heal
   if (spell.baseHeal > 0) {
     newCasterHealth = Math.min(
       caster.maxHealth,
@@ -148,7 +146,6 @@ export const applySpell = (
     messages.push(`${spell.name} heals for ${spell.baseHeal}!`);
   }
 
-  // Process effects with dice rolls
   for (const effect of spell.effects) {
     const effectName = getEffectDisplayName(effect.type);
 
@@ -161,7 +158,6 @@ export const applySpell = (
         continue;
       }
 
-      // Add dice info to success messages
       switch (effect.type) {
         case "damage":
           newTargetHealth -= effect.value;
@@ -255,7 +251,6 @@ export const applySpell = (
           break;
       }
     } else {
-      // 100% chance - no dice roll needed
       switch (effect.type) {
         case "damage":
           newTargetHealth -= effect.value;

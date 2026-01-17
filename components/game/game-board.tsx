@@ -15,6 +15,7 @@ import { HealthBar } from "./health-bar";
 import { StanceSelector } from "./stance-selector";
 import { SpellSelector } from "./spell-selector";
 import { ActionLog } from "./action-log";
+import { TurnWinIndicator } from "./turn-win-indicator";
 import { RotateCcw, Swords, Trophy } from "lucide-react";
 
 interface GameBoardProps {
@@ -28,6 +29,10 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
   const [gameState, setGameState] = useState<GameState>(() =>
     createInitialState(gameMode)
   );
+  const [turnWin, setTurnWin] = useState<{
+    winner: 1 | 2;
+    stance: Stance;
+  } | null>(null);
 
   const handleStanceSelect = useCallback(
     (stance: Stance) => {
@@ -43,6 +48,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
 
         if (result === "win") {
           messages.push("Player wins the stance!");
+          setTurnWin({ winner: 1, stance });
           setGameState((prev) => ({
             ...prev,
             player1Stance: stance,
@@ -53,6 +59,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
           }));
         } else if (result === "lose") {
           messages.push("CPU wins the stance!");
+          setTurnWin({ winner: 2, stance: cpuStance });
 
           const cpuSpell = getCPUSpell(cpuStance);
           const {
@@ -153,6 +160,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
 
           if (result === "win") {
             messages.push("Player 1 wins the stance!");
+            setTurnWin({ winner: 1, stance: p1Stance });
             setGameState((prev) => ({
               ...prev,
               player2Stance: stance,
@@ -163,6 +171,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
             }));
           } else if (result === "lose") {
             messages.push("Player 2 wins the stance!");
+            setTurnWin({ winner: 2, stance });
             setGameState((prev) => ({
               ...prev,
               player2Stance: stance,
@@ -283,7 +292,6 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
       "The gesture didn't match. Turn lost.",
     ];
 
-    // Process status effects for both players
     const p1Result = processStatusEffects(gameState.player1);
     const p2Result = processStatusEffects(gameState.player2);
 
@@ -346,7 +354,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
           </div>
           <button
             onClick={handleReset}
-            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+            className="flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
           >
             <RotateCcw className="w-4 h-4" />
             Reset
@@ -426,6 +434,15 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
             />
           ) : null}
         </div>
+
+        {/* Turn Win Indicator */}
+        {turnWin && (
+          <TurnWinIndicator
+            winner={turnWin.winner}
+            stance={turnWin.stance}
+            onAnimationEnd={() => setTurnWin(null)}
+          />
+        )}
 
         {/* Action Log */}
         <ActionLog
