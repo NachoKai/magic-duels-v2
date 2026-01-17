@@ -13,9 +13,10 @@ import {
 
 interface MainMenuProps {
   onStartGame: (mode: "cpu" | "local") => void;
+  onOpenLibrary: () => void;
 }
 
-export function MainMenu({ onStartGame }: MainMenuProps) {
+export function MainMenu({ onStartGame, onOpenLibrary }: MainMenuProps) {
   return (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
       <div className="max-w-md w-full space-y-8">
@@ -59,6 +60,20 @@ export function MainMenu({ onStartGame }: MainMenuProps) {
             <Users className="w-6 h-6 text-sneaky group-hover:scale-110 transition-transform" />
             <span className="text-lg font-semibold text-foreground">
               2 Player Local
+            </span>
+          </button>
+
+          <button
+            onClick={onOpenLibrary}
+            className={cn(
+              "w-full flex items-center justify-center gap-3 p-4 rounded-lg border-2 transition-all duration-300",
+              "border-muted-foreground/30 bg-muted/10 hover:bg-muted/20",
+              "group cursor-pointer"
+            )}
+          >
+            <BookOpen className="w-6 h-6 text-muted-foreground group-hover:scale-110 transition-transform" />
+            <span className="text-lg font-semibold text-foreground">
+              Spell Library
             </span>
           </button>
         </div>
