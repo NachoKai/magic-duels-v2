@@ -19,7 +19,7 @@ export function TurnWinIndicator({
       className="fixed inset-0 pointer-events-none z-50 flex items-center justify-center animate-flash-overlay"
       style={{
         color: `var(${variableName})`,
-        background: `radial-gradient(circle at center, var(${variableName}) 0%, transparent 60%)`,
+        background: `radial-gradient(circle at center, var(${variableName}) 0%, transparent 50%)`,
         mixBlendMode: "hard-light",
       }}
       onAnimationEnd={onAnimationEnd}
