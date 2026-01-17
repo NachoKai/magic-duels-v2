@@ -2,6 +2,7 @@
 
 import { getAllSpellForms, SpellForm } from "@/lib/spell-forms";
 import { ArrowLeft, BookOpen } from "lucide-react";
+import { EffectIcon } from "@/components/game/effect-icon";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -282,8 +283,11 @@ function SpellCard({
               </p>
               <ul className="text-xs space-y-0.5">
                 {spellData.effects.map((effect, idx) => (
-                  <li key={idx} className="flex justify-between">
-                    <span className="capitalize">{effect.type}</span>
+                  <li key={idx} className="flex items-center justify-between">
+                    <div className="flex items-center gap-1.5">
+                      <EffectIcon type={effect.type} className="w-3 h-3" />
+                      <span className="capitalize">{effect.type}</span>
+                    </div>
                     <span className="text-muted-foreground">
                       {effect.chance}%
                     </span>

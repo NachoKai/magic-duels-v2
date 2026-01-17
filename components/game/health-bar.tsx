@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import type { StatusEffect } from "@/lib/spells";
+import { EffectIcon } from "@/components/game/effect-icon";
 
 interface HealthBarProps {
   current: number;
@@ -64,13 +65,14 @@ export function HealthBar({
           <span
             key={i}
             className={cn(
-              "text-[12px] px-1.5 py-0.5 rounded font-medium",
+              "flex items-center gap-1 text-[12px] px-1.5 py-0.5 rounded font-medium",
               effect.type === "bleed" && "bg-bleed text-background",
               effect.type === "burn" && "bg-burn text-background",
               effect.type === "heal" && "bg-heal text-background",
               effect.type === "drain" && "bg-drain text-background"
             )}
           >
+            <EffectIcon type={effect.type} className="w-3 h-3" />
             {effect.type.toUpperCase()} -{effect.value} ({effect.turnsRemaining}
             t)
           </span>

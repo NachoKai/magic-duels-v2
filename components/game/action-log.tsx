@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import { useRef, useEffect } from "react";
 import { Shield, Eye, Swords, Dices } from "lucide-react";
+import { EffectIcon } from "@/components/game/effect-icon";
 
 interface ActionLogProps {
   messages: string[];
@@ -102,6 +103,33 @@ function DiceRollDisplay({ dice }: { dice: ParsedDice }) {
     </div>
   );
 }
+
+const formatMessageWithIcons = (text: string) => {
+  const parts = text.split(
+    /(Bleeding|Burning|Heals|Heal|Healing|Drained|Draining|Stunned|Stun|damage)/gi
+  );
+
+  return parts.map((part, i) => {
+    const lower = part.toLowerCase();
+    let type = "";
+    if (lower.includes("bleed")) type = "bleed";
+    else if (lower.includes("burn")) type = "burn";
+    else if (lower.includes("heal")) type = "heal";
+    else if (lower.includes("drain")) type = "drain";
+    else if (lower.includes("stun")) type = "stun";
+    else if (lower === "damage") type = "damage";
+
+    if (type) {
+      return (
+        <span key={i} className="inline-flex items-center gap-1">
+          <EffectIcon type={type} className="w-3 h-3" />
+          {part}
+        </span>
+      );
+    }
+    return <span key={i}>{part}</span>;
+  });
+};
 
 export function ActionLog({
   messages,
@@ -203,7 +231,7 @@ export function ActionLog({
                       msg.includes("failed") && "text-muted-foreground"
                     )}
                   >
-                    {displayMsg}
+                    {formatMessageWithIcons(displayMsg)}
                   </span>
                 </div>
               </div>

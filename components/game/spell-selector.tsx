@@ -8,8 +8,9 @@ import {
 } from "@/lib/spells";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { Sparkles, Heart, Zap, Droplet, Flame } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import Image from "next/image";
+import { EffectIcon } from "@/components/game/effect-icon";
 import { SpellDrawingCanvas } from "./spell-drawing-canvas";
 import { DRAWING_TIME_LIMIT } from "@/lib/game-config";
 
@@ -113,33 +114,32 @@ export function SpellSelector({
             <div className="flex flex-wrap gap-1 text-[12px]">
               {spell.baseDamage > 0 && (
                 <span className="flex items-center gap-0.5 text-destructive">
-                  <Zap className="w-3 h-3" />
+                  <EffectIcon type="damage" className="w-3 h-3" />
                   {spell.baseDamage}
                 </span>
               )}
               {spell.baseHeal > 0 && (
                 <span className="flex items-center gap-0.5 text-heal">
-                  <Heart className="w-3 h-3" />
+                  <EffectIcon type="heal" className="w-3 h-3" />
                   {spell.baseHeal}
                 </span>
               )}
-              {spell.effects.some((e) => e.type === "bleed") && (
-                <span className="flex items-center gap-0.5 text-bleed">
-                  <Droplet className="w-3 h-3" />
-                  Bleed
+              {spell.effects.map((e, i) => (
+                <span
+                  key={i}
+                  className={cn(
+                    "flex items-center gap-0.5 capitalize",
+                    e.type === "bleed" && "text-bleed",
+                    e.type === "burn" && "text-burn",
+                    e.type === "stun" && "text-stun",
+                    !["bleed", "burn", "stun"].includes(e.type) &&
+                      "text-muted-foreground"
+                  )}
+                >
+                  <EffectIcon type={e.type} className="w-3 h-3" />
+                  {e.type}
                 </span>
-              )}
-              {spell.effects.some((e) => e.type === "burn") && (
-                <span className="flex items-center gap-0.5 text-burn">
-                  <Flame className="w-3 h-3" />
-                  Burn
-                </span>
-              )}
-              {spell.effects.some((e) => e.type === "stun") && (
-                <span className="flex items-center gap-0.5 text-stun">
-                  Stun
-                </span>
-              )}
+              ))}
             </div>
 
             <p className="text-[12px] text-muted-foreground mt-1 line-clamp-2">
@@ -183,10 +183,19 @@ export function SpellSelector({
               <div className="mt-2 text-[12px] text-muted-foreground">
                 <p className="font-medium mb-1">Effects:</p>
                 {selectedSpell.effects.map((effect, i) => (
-                  <p key={i}>
-                    {getEffectDisplayName(effect.type)}: {effect.value}
-                    {effect.duration ? ` for ${effect.duration}t` : ""} (
-                    {effect.chance}% chance)
+                  <p
+                    key={i}
+                    className="flex items-center justify-center gap-1.5"
+                  >
+                    <span className="flex items-center gap-1">
+                      <EffectIcon type={effect.type} className="w-3 h-3" />
+                      {getEffectDisplayName(effect.type)}:
+                    </span>
+                    <span>
+                      {effect.value}
+                      {effect.duration ? ` for ${effect.duration}t` : ""} (
+                      {effect.chance}% chance)
+                    </span>
                   </p>
                 ))}
               </div>
