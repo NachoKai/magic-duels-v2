@@ -5,6 +5,10 @@ import { ArrowLeft, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { SpellDrawingCanvas } from "@/components/game/spell-drawing-canvas";
+import { DRAWING_TIME_LIMIT } from "@/lib/game-config";
+import { useState } from "react";
+import { spells as allSpellsData, Spell } from "@/lib/spells";
 
 interface LibraryViewProps {
   onBack: () => void;
@@ -12,12 +16,41 @@ interface LibraryViewProps {
 
 export function LibraryView({ onBack }: LibraryViewProps) {
   const spells = getAllSpellForms();
+  const [selectedSpell, setSelectedSpell] = useState<Spell | null>(null);
 
   const formatSpellName = (id: string) => {
     return id
       .split("-")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
+  };
+
+  const handleSpellClick = (spellForm: SpellForm) => {
+    // Find the full spell data
+    const spellData = allSpellsData.find((s) => s.id === spellForm.spellId);
+    if (spellData) {
+      setSelectedSpell(spellData);
+    } else {
+      // Fallback if spell data is missing (should verify if this is needed, but safe for now)
+      // eslint-disable-next-line
+      console.warn(`Spell data not found for id: ${spellForm.spellId}`);
+      // Create a dummy spell object for practice if needed
+      const dummySpell: Spell = {
+        id: spellForm.spellId,
+        name: formatSpellName(spellForm.spellId),
+        stance: "Defensive", // Default
+        baseDamage: 0,
+        baseHeal: 0,
+        effects: [],
+        description: "Practice Spell",
+        image: "",
+      };
+      setSelectedSpell(dummySpell);
+    }
+  };
+
+  const handleClosePractice = () => {
+    setSelectedSpell(null);
   };
 
   return (
@@ -45,23 +78,45 @@ export function LibraryView({ onBack }: LibraryViewProps) {
                 key={spell.spellId}
                 spell={spell}
                 name={formatSpellName(spell.spellId)}
+                onClick={() => handleSpellClick(spell)}
               />
             ))}
           </div>
         </ScrollArea>
       </div>
+
+      {selectedSpell && (
+        <SpellDrawingCanvas
+          spell={selectedSpell}
+          onSuccess={handleClosePractice}
+          onFailure={handleClosePractice}
+          onClose={handleClosePractice}
+          timeLimit={DRAWING_TIME_LIMIT}
+        />
+      )}
     </div>
   );
 }
 
-function SpellCard({ spell, name }: { spell: SpellForm; name: string }) {
+function SpellCard({
+  spell,
+  name,
+  onClick,
+}: {
+  spell: SpellForm;
+  name: string;
+  onClick: () => void;
+}) {
   // Convert normalized points (0-1) to SVG coordinates (0-100)
   const pointsString = spell.points
     .map((p) => `${p.x * 100},${p.y * 100}`)
     .join(" ");
 
   return (
-    <Card className="hover:border-primary/50 transition-colors">
+    <Card
+      className="hover:border-primary/50 transition-all cursor-pointer hover:scale-105"
+      onClick={onClick}
+    >
       <CardHeader className="pb-2">
         <CardTitle className="text-lg text-center">{name}</CardTitle>
       </CardHeader>
