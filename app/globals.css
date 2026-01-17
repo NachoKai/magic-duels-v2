@@ -154,7 +154,6 @@ button,
 
 /* Custom animations */
 @keyframes glow {
-
   0%,
   100% {
     box-shadow:
@@ -170,7 +169,6 @@ button,
 }
 
 @keyframes shake {
-
   0%,
   100% {
     transform: translateX(0);
@@ -186,7 +184,6 @@ button,
 }
 
 @keyframes pulse-glow {
-
   0%,
   100% {
     opacity: 0.6;
