@@ -91,7 +91,7 @@ export function MainMenu({ onStartGame }: MainMenuProps) {
         </div>
 
         {/* Footer */}
-        <p className="text-center text-xs text-muted-foreground">
+        <p className="text-center text-[14px] text-muted-foreground">
           55+ unique spells with damage, healing, and status effects
         </p>
       </div>

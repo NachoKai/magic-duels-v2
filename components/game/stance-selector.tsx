@@ -59,7 +59,7 @@ export function StanceSelector({ onSelect, disabled, playerName }: StanceSelecto
               )}
             />
             <span className="font-medium text-foreground">{stance}</span>
-            <span className="text-[10px] text-muted-foreground">{description}</span>
+            <span className="text-[12px] text-muted-foreground">{description}</span>
           </button>
         ))}
       </div>

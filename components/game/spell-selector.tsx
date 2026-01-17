@@ -74,7 +74,7 @@ export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps
               <span className="font-medium text-sm text-foreground truncate">{spell.name}</span>
             </div>
 
-            <div className="flex flex-wrap gap-1 text-[10px]">
+            <div className="flex flex-wrap gap-1 text-[12px]">
               {spell.baseDamage > 0 && (
                 <span className="flex items-center gap-0.5 text-destructive">
                   <Zap className="w-3 h-3" />
@@ -104,7 +104,7 @@ export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps
               )}
             </div>
 
-            <p className="text-[10px] text-muted-foreground mt-1 line-clamp-2">{spell.description}</p>
+            <p className="text-[12px] text-muted-foreground mt-1 line-clamp-2">{spell.description}</p>
           </button>
         ))}
       </div>
@@ -123,14 +123,14 @@ export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps
           <div className="text-center">
             <h3 className={cn("font-semibold", `text-${getStanceColor()}`)}>{selectedSpell.name}</h3>
             <p className="text-sm text-muted-foreground">{selectedSpell.description}</p>
-            <div className="flex justify-center gap-3 mt-2 text-xs">
+            <div className="flex justify-center gap-3 mt-2 text-[14px]">
               {selectedSpell.baseDamage > 0 && (
                 <span className="text-destructive">Damage: {selectedSpell.baseDamage}</span>
               )}
               {selectedSpell.baseHeal > 0 && <span className="text-heal">Heal: {selectedSpell.baseHeal}</span>}
             </div>
             {selectedSpell.effects.length > 0 && (
-              <div className="mt-2 text-[10px] text-muted-foreground">
+              <div className="mt-2 text-[12px] text-muted-foreground">
                 <p className="font-medium mb-1">Effects:</p>
                 {selectedSpell.effects.map((effect, i) => (
                   <p key={i}>

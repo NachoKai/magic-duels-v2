@@ -25,7 +25,7 @@ export function HealthBar({ current, max, name, statusEffects, isStunned, isPlay
     <div className={cn("w-full max-w-xs", !isPlayer1 && "text-right")}>
       <div className={cn("flex items-center gap-2 mb-1", !isPlayer1 && "flex-row-reverse")}>
         <span className="text-sm font-medium text-foreground">{name}</span>
-        <span className="text-xs text-muted-foreground">
+        <span className="text-[14px] text-muted-foreground">
           {current}/{max}
         </span>
       </div>
@@ -39,7 +39,7 @@ export function HealthBar({ current, max, name, statusEffects, isStunned, isPlay
 
       <div className={cn("flex gap-1 mt-1 flex-wrap", !isPlayer1 && "justify-end")}>
         {isStunned > 0 && (
-          <span className="text-[10px] px-1.5 py-0.5 rounded bg-stun text-background font-medium">
+          <span className="text-[12px] px-1.5 py-0.5 rounded bg-stun text-background font-medium">
             STUNNED ({isStunned})
           </span>
         )}
@@ -47,7 +47,7 @@ export function HealthBar({ current, max, name, statusEffects, isStunned, isPlay
           <span
             key={i}
             className={cn(
-              "text-[10px] px-1.5 py-0.5 rounded font-medium",
+              "text-[12px] px-1.5 py-0.5 rounded font-medium",
               effect.type === "bleed" && "bg-bleed text-background",
               effect.type === "burn" && "bg-burn text-background",
               effect.type === "heal" && "bg-heal text-background",

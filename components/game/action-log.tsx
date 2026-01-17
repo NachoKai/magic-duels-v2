@@ -72,7 +72,7 @@ function DiceRollDisplay({ dice }: { dice: ParsedDice }) {
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px] font-mono mr-1.5",
+        "inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[12px] font-mono mr-1.5",
         dice.success ? "bg-heal/20 text-heal" : "bg-destructive/20 text-destructive",
       )}
     >
@@ -97,9 +97,9 @@ export function ActionLog({ messages, player1Name = "Player 1", player2Name = "P
   }, [messages])
 
   return (
-    <div className="bg-card rounded-lg border border-border overflow-hidden h-auto">
-      <h3 className="text-xs font-semibold text-primary px-3 py-2 bg-card border-b border-border">Battle Log</h3>
-      <div ref={scrollRef} className="h-auto overflow-y-auto p-3 space-y-2 no-scrollbar">
+    <div className="bg-card rounded-lg border border-border overflow-hidden">
+      <h3 className="text-[14px] font-semibold px-3 py-2 bg-card border-b border-border">Battle Log</h3>
+      <div ref={scrollRef} className="h-80 overflow-y-auto p-3 space-y-2 no-scrollbar">
         {messages.map((msg, index) => {
           const type = getMessageType(msg, player1Name, player2Name)
           const stanceIcon = getStanceIcon(msg)
@@ -111,7 +111,7 @@ export function ActionLog({ messages, player1Name = "Player 1", player2Name = "P
             return (
               <div key={index} className="flex items-center gap-3 py-2 animate-in fade-in duration-300">
                 <div className="flex-1 h-px bg-border" />
-                <span className="text-xs text-muted-foreground font-medium">Turn {turnNum}</span>
+                <span className="text-[14px] text-muted-foreground font-medium">Turn {turnNum}</span>
                 <div className="flex-1 h-px bg-border" />
               </div>
             )
@@ -122,7 +122,7 @@ export function ActionLog({ messages, player1Name = "Player 1", player2Name = "P
               <div key={index} className="flex justify-center">
                 <div
                   className={cn(
-                    "text-xs px-3 py-1 rounded-full bg-muted/50 text-muted-foreground",
+                    "text-[14px] px-3 py-1 rounded-full bg-muted/50 text-muted-foreground",
                     "animate-in fade-in slide-in-from-bottom-1 duration-300",
                     msg.includes("wins") && "bg-primary/20 text-primary font-semibold",
                   )}
@@ -147,7 +147,7 @@ export function ActionLog({ messages, player1Name = "Player 1", player2Name = "P
             >
               <div
                 className={cn(
-                  "max-w-[85%] px-3 py-1.5 rounded-2xl text-xs",
+                  "max-w-[85%] px-3 py-1.5 rounded-2xl text-[14px]",
                   isPlayer1 ? "bg-primary/20 rounded-bl-sm" : "bg-destructive/20 rounded-br-sm",
                   msg.includes("damage") && "border border-destructive/50",
                   msg.includes("heal") && "border border-heal/50",
