@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { MainMenu } from "@/components/game/main-menu"
-import { GameBoard } from "@/components/game/game-board"
+import { useState } from "react";
+import { MainMenu } from "@/components/game/main-menu";
+import { GameBoard } from "@/components/game/game-board";
 
-type GameMode = "cpu" | "local" | null
+type GameMode = "cpu" | "local" | null;
 
 export default function Home() {
-  const [gameMode, setGameMode] = useState<GameMode>(null)
+  const [gameMode, setGameMode] = useState<GameMode>(null);
 
   const handleStartGame = (mode: "cpu" | "local") => {
-    setGameMode(mode)
-  }
+    setGameMode(mode);
+  };
 
   const handleBackToMenu = () => {
-    setGameMode(null)
-  }
+    setGameMode(null);
+  };
 
   if (gameMode) {
-    return <GameBoard gameMode={gameMode} onBackToMenu={handleBackToMenu} />
+    return <GameBoard gameMode={gameMode} onBackToMenu={handleBackToMenu} />;
   }
 
-  return <MainMenu onStartGame={handleStartGame} />
+  return <MainMenu onStartGame={handleStartGame} />;
 }

@@ -745,12 +745,12 @@ export const spells: Spell[] = [
 ];
 
 export const getSpellsByStance = (stance: Stance): Spell[] => {
-  return spells.filter(spell => spell.stance === stance);
+  return spells.filter((spell) => spell.stance === stance);
 };
 
 export const getStanceAdvantage = (
   stance1: Stance,
-  stance2: Stance,
+  stance2: Stance
 ): "win" | "lose" | "tie" => {
   if (stance1 === stance2) return "tie";
   if (

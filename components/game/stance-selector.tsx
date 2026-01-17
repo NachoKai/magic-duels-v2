@@ -1,42 +1,53 @@
-"use client"
+"use client";
 
-import type { Stance } from "@/lib/spells"
-import { cn } from "@/lib/utils"
-import { Shield, Eye, Sword } from "lucide-react"
+import type { Stance } from "@/lib/spells";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface StanceSelectorProps {
-  onSelect: (stance: Stance) => void
-  disabled?: boolean
-  playerName: string
+  onSelect: (stance: Stance) => void;
+  disabled?: boolean;
+  playerName: string;
 }
 
-const stances: { stance: Stance; icon: typeof Shield; color: string; description: string }[] = [
+const stances: {
+  stance: Stance;
+  image: string;
+  color: string;
+  description: string;
+}[] = [
   {
     stance: "Defensive",
-    icon: Shield,
+    image: "/assets/defensive.png",
     color: "defensive",
     description: "Beats Aggressive",
   },
   {
     stance: "Sneaky",
-    icon: Eye,
+    image: "/assets/sneaky.png",
     color: "sneaky",
     description: "Beats Defensive",
   },
   {
     stance: "Aggressive",
-    icon: Sword,
+    image: "/assets/aggresive.png",
     color: "aggressive",
     description: "Beats Sneaky",
   },
-]
+];
 
-export function StanceSelector({ onSelect, disabled, playerName }: StanceSelectorProps) {
+export function StanceSelector({
+  onSelect,
+  disabled,
+  playerName,
+}: StanceSelectorProps) {
   return (
     <div className="space-y-4">
-      <h2 className="text-xl font-semibold text-center text-foreground">{playerName}, choose your stance</h2>
+      <h2 className="text-xl font-semibold text-center text-foreground">
+        {playerName}, choose your stance
+      </h2>
       <div className="grid grid-cols-3 gap-3">
-        {stances.map(({ stance, icon: Icon, color, description }) => (
+        {stances.map(({ stance, image, color, description }) => (
           <button
             key={stance}
             onClick={() => onSelect(stance)}
@@ -44,25 +55,29 @@ export function StanceSelector({ onSelect, disabled, playerName }: StanceSelecto
             className={cn(
               "group relative flex flex-col items-center gap-2 p-4 rounded-lg border-2 transition-all duration-300",
               "hover:scale-105 hover:shadow-lg cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
-              color === "defensive" && "border-defensive hover:bg-defensive/10 hover:border-defensive",
-              color === "sneaky" && "border-sneaky hover:bg-sneaky/10 hover:border-sneaky",
-              color === "aggressive" && "border-aggressive hover:bg-aggressive/10 hover:border-aggressive",
-              "bg-card",
+              color === "defensive" &&
+                "border-defensive hover:bg-defensive/10 hover:border-defensive",
+              color === "sneaky" &&
+                "border-sneaky hover:bg-sneaky/10 hover:border-sneaky",
+              color === "aggressive" &&
+                "border-aggressive hover:bg-aggressive/10 hover:border-aggressive",
+              "bg-card"
             )}
           >
-            <Icon
-              className={cn(
-                "w-10 h-10 transition-all group-hover:scale-110",
-                color === "defensive" && "text-defensive",
-                color === "sneaky" && "text-sneaky",
-                color === "aggressive" && "text-aggressive",
-              )}
+            <Image
+              src={image}
+              alt={stance}
+              width={80}
+              height={80}
+              className="transition-all group-hover:scale-110"
             />
             <span className="font-medium text-foreground">{stance}</span>
-            <span className="text-[12px] text-muted-foreground">{description}</span>
+            <span className="text-[12px] text-muted-foreground">
+              {description}
+            </span>
           </button>
         ))}
       </div>
     </div>
-  )
+  );
 }

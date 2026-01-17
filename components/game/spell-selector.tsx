@@ -1,46 +1,60 @@
-"use client"
+"use client";
 
-import { type Spell, type Stance, getSpellsByStance, getEffectDisplayName } from "@/lib/spells"
-import { cn } from "@/lib/utils"
-import { useState } from "react"
-import { Sparkles, Heart, Zap, Droplet, Flame } from "lucide-react"
-import Image from "next/image"
+import {
+  type Spell,
+  type Stance,
+  getSpellsByStance,
+  getEffectDisplayName,
+} from "@/lib/spells";
+import { cn } from "@/lib/utils";
+import { useState } from "react";
+import { Sparkles, Heart, Zap, Droplet, Flame } from "lucide-react";
+import Image from "next/image";
 
 interface SpellSelectorProps {
-  stance: Stance
-  onSelect: (spell: Spell) => void
-  disabled?: boolean
+  stance: Stance;
+  onSelect: (spell: Spell) => void;
+  disabled?: boolean;
 }
 
-export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps) {
-  const [selectedSpell, setSelectedSpell] = useState<Spell | null>(null)
-  const spells = getSpellsByStance(stance)
+export function SpellSelector({
+  stance,
+  onSelect,
+  disabled,
+}: SpellSelectorProps) {
+  const [selectedSpell, setSelectedSpell] = useState<Spell | null>(null);
+  const spells = getSpellsByStance(stance);
 
   const getStanceColor = () => {
     switch (stance) {
       case "Defensive":
-        return "defensive"
+        return "defensive";
       case "Sneaky":
-        return "sneaky"
+        return "sneaky";
       case "Aggressive":
-        return "aggressive"
+        return "aggressive";
     }
-  }
+  };
 
   const handleSelect = (spell: Spell) => {
-    setSelectedSpell(spell)
-  }
+    setSelectedSpell(spell);
+  };
 
   const handleConfirm = () => {
     if (selectedSpell) {
-      onSelect(selectedSpell)
-      setSelectedSpell(null)
+      onSelect(selectedSpell);
+      setSelectedSpell(null);
     }
-  }
+  };
 
   return (
     <div className="space-y-4">
-      <h2 className={cn("text-xl font-semibold text-center", `text-${getStanceColor()}`)}>
+      <h2
+        className={cn(
+          "text-xl font-semibold text-center",
+          `text-${getStanceColor()}`
+        )}
+      >
         Choose your {stance} spell
       </h2>
 
@@ -55,7 +69,7 @@ export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps
               "hover:scale-[1.02] cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
               selectedSpell?.id === spell.id
                 ? `border-${getStanceColor()} bg-${getStanceColor()}/20 ring-2 ring-${getStanceColor()}`
-                : "border-border bg-card hover:bg-secondary/50",
+                : "border-border bg-card hover:bg-secondary/50"
             )}
           >
             <div className="w-full flex items-center justify-center mb-2">
@@ -71,7 +85,9 @@ export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps
             </div>
             <div className="flex items-center gap-2 mb-1 w-full">
               <Sparkles className={cn("w-4 h-4", `text-${getStanceColor()}`)} />
-              <span className="font-medium text-sm text-foreground truncate">{spell.name}</span>
+              <span className="font-medium text-sm text-foreground truncate">
+                {spell.name}
+              </span>
             </div>
 
             <div className="flex flex-wrap gap-1 text-[12px]">
@@ -100,11 +116,15 @@ export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps
                 </span>
               )}
               {spell.effects.some((e) => e.type === "stun") && (
-                <span className="flex items-center gap-0.5 text-stun">Stun</span>
+                <span className="flex items-center gap-0.5 text-stun">
+                  Stun
+                </span>
               )}
             </div>
 
-            <p className="text-[12px] text-muted-foreground mt-1 line-clamp-2">{spell.description}</p>
+            <p className="text-[12px] text-muted-foreground mt-1 line-clamp-2">
+              {spell.description}
+            </p>
           </button>
         ))}
       </div>
@@ -121,13 +141,23 @@ export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps
             />
           </div>
           <div className="text-center">
-            <h3 className={cn("font-semibold", `text-${getStanceColor()}`)}>{selectedSpell.name}</h3>
-            <p className="text-sm text-muted-foreground">{selectedSpell.description}</p>
+            <h3 className={cn("font-semibold", `text-${getStanceColor()}`)}>
+              {selectedSpell.name}
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              {selectedSpell.description}
+            </p>
             <div className="flex justify-center gap-3 mt-2 text-[14px]">
               {selectedSpell.baseDamage > 0 && (
-                <span className="text-destructive">Damage: {selectedSpell.baseDamage}</span>
+                <span className="text-destructive">
+                  Damage: {selectedSpell.baseDamage}
+                </span>
               )}
-              {selectedSpell.baseHeal > 0 && <span className="text-heal">Heal: {selectedSpell.baseHeal}</span>}
+              {selectedSpell.baseHeal > 0 && (
+                <span className="text-heal">
+                  Heal: {selectedSpell.baseHeal}
+                </span>
+              )}
             </div>
             {selectedSpell.effects.length > 0 && (
               <div className="mt-2 text-[12px] text-muted-foreground">
@@ -135,7 +165,8 @@ export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps
                 {selectedSpell.effects.map((effect, i) => (
                   <p key={i}>
                     {getEffectDisplayName(effect.type)}: {effect.value}
-                    {effect.duration ? ` for ${effect.duration}t` : ""} ({effect.chance}% chance)
+                    {effect.duration ? ` for ${effect.duration}t` : ""} (
+                    {effect.chance}% chance)
                   </p>
                 ))}
               </div>
@@ -145,7 +176,7 @@ export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps
             onClick={handleConfirm}
             className={cn(
               "px-6 py-2 rounded-lg font-semibold transition-all cursor-pointer",
-              "bg-primary text-primary-foreground hover:opacity-90",
+              "bg-primary text-primary-foreground hover:opacity-90"
             )}
           >
             Cast Spell
@@ -153,5 +184,5 @@ export function SpellSelector({ stance, onSelect, disabled }: SpellSelectorProps
         </div>
       )}
     </div>
-  )
+  );
 }
