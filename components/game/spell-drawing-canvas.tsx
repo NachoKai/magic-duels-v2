@@ -6,7 +6,10 @@ import { type Point, getSpellForm } from "@/lib/spell-forms";
 import { matchesGesture } from "@/lib/gesture-recognition";
 import { X, Clock, CheckCircle2, XCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { DRAWING_TIME_WARNING_THRESHOLD } from "@/lib/game-config";
+import {
+  DRAWING_TIME_WARNING_THRESHOLD,
+  DRAWING_VALIDATION_THRESHOLD,
+} from "@/lib/game-config";
 
 interface SpellDrawingCanvasProps {
   spell: Spell;
@@ -241,7 +244,11 @@ export function SpellDrawingCanvas({
 
     // Check gesture
     const template = getSpellForm(spell.id);
-    const isMatch = matchesGesture(points, template, 0.75);
+    const isMatch = matchesGesture(
+      points,
+      template,
+      DRAWING_VALIDATION_THRESHOLD
+    );
 
     setIsComplete(true);
     setResult(isMatch ? "success" : "failure");
@@ -386,10 +393,7 @@ export function SpellDrawingCanvas({
         {/* Instructions */}
         <div className="mt-4 text-sm text-muted-foreground text-center">
           {!isComplete ? (
-            <p>
-              Draw the spell form with your mouse or finger. Match the reference
-              guide to cast the spell.
-            </p>
+            <p>Match the reference guide to cast the spell.</p>
           ) : result === "success" ? (
             <p className="text-green-500">Perfect! The spell has been cast.</p>
           ) : (

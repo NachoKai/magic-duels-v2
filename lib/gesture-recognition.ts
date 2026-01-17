@@ -208,12 +208,19 @@ export function recognizeGesture(
   return similarity;
 }
 
-// Check if gesture matches template with threshold
 export function matchesGesture(
   drawnPoints: Point[],
   templatePoints: Point[],
   threshold: number = 0.8
 ): boolean {
-  const similarity = recognizeGesture(drawnPoints, templatePoints);
-  return similarity >= threshold;
+  // Check normal direction
+  const similarityNormal = recognizeGesture(drawnPoints, templatePoints);
+
+  // Check reverse direction (allow drawing from end to start)
+  // We reverse a copy of the template points to check if the user drew it backwards
+  const reversedTemplate = [...templatePoints].reverse();
+  const similarityReverse = recognizeGesture(drawnPoints, reversedTemplate);
+
+  // Return true if either direction matches
+  return Math.max(similarityNormal, similarityReverse) >= threshold;
 }
