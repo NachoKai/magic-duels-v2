@@ -2,7 +2,6 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Cinzel, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import { ClientLayout } from "./client-layout";
 import "./globals.css";
 
 const _cinzel = Cinzel({
@@ -81,7 +80,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`font-sans antialiased`}>
-        <ClientLayout>{children}</ClientLayout>
+        {children}
         <Analytics />
       </body>
     </html>
