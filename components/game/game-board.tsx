@@ -336,7 +336,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
         : null;
 
   return (
-    <div className="min-h-screen bg-background p-4 overflow-y-auto no-scrollbar">
+    <div className="min-h-screen p-4 overflow-y-auto no-scrollbar">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">

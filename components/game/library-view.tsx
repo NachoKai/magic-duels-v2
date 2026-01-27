@@ -58,7 +58,7 @@ export function LibraryView({ onBack }: LibraryViewProps) {
   });
 
   return (
-    <div className="min-h-screen bg-background p-4 flex flex-col">
+    <div className="min-h-screen p-4 flex flex-col">
       <div className="max-w-6xl mx-auto w-full flex-1 flex flex-col gap-6">
         <div className="flex flex-col md:flex-row items-center justify-between border-b pb-4 gap-4">
           <div className="flex items-center gap-4">
