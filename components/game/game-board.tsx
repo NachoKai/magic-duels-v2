@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import {
   type GameState,
   createInitialState,
@@ -33,6 +33,32 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
     winner: 1 | 2;
     stance: Stance;
   } | null>(null);
+
+  const winner =
+    gameState.player1.health <= 0
+      ? gameMode === "cpu"
+        ? "CPU"
+        : "Player 2"
+      : gameState.player2.health <= 0
+        ? "Player 1"
+        : null;
+
+  useEffect(() => {
+    let bgImage = 'url("/assets/back1.jpg")';
+    if (gameState.phase === "gameover") {
+      if (winner === "Player 1") {
+        bgImage = 'url("/assets/win1.jpeg")';
+      } else if (winner === "CPU" || winner === "Player 2") {
+        bgImage = 'url("/assets/defeat1.jpeg")';
+      }
+    }
+    document.body.style.setProperty("--bg-image", bgImage);
+
+    // Reset background when component unmounts
+    return () => {
+      document.body.style.removeProperty("--bg-image");
+    };
+  }, [gameState.phase, winner]);
 
   const handleStanceSelect = useCallback(
     (stance: Stance) => {
@@ -325,15 +351,6 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
   const handleReset = useCallback(() => {
     setGameState(createInitialState(gameMode));
   }, [gameMode]);
-
-  const winner =
-    gameState.player1.health <= 0
-      ? gameMode === "cpu"
-        ? "CPU"
-        : "Player 2"
-      : gameState.player2.health <= 0
-        ? "Player 1"
-        : null;
 
   return (
     <div className="min-h-screen p-4 overflow-y-auto no-scrollbar">
