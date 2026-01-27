@@ -2,6 +2,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Cinzel, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { ClientLayout } from "./client-layout";
 import "./globals.css";
 
 const _cinzel = Cinzel({
@@ -17,19 +18,58 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
+        url: "/assets/android-icon-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
       },
       {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
+        url: "/assets/android-icon-144x144.png",
+        sizes: "144x144",
+        type: "image/png",
       },
       {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/assets/android-icon-96x96.png",
+        sizes: "96x96",
+        type: "image/png",
+      },
+      {
+        url: "/assets/android-icon-72x72.png",
+        sizes: "72x72",
+        type: "image/png",
+      },
+      {
+        url: "/assets/android-icon-48x48.png",
+        sizes: "48x48",
+        type: "image/png",
+      },
+      {
+        url: "/assets/android-icon-36x36.png",
+        sizes: "36x36",
+        type: "image/png",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: [
+      {
+        url: "/assets/apple-icon-76x76.png",
+        sizes: "76x76",
+        type: "image/png",
+      },
+      {
+        url: "/assets/apple-icon-72x72.png",
+        sizes: "72x72",
+        type: "image/png",
+      },
+      {
+        url: "/assets/apple-icon-60x60.png",
+        sizes: "60x60",
+        type: "image/png",
+      },
+      {
+        url: "/assets/apple-icon-57x57.png",
+        sizes: "57x57",
+        type: "image/png",
+      },
+    ],
   },
 };
 
@@ -39,9 +79,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`font-sans antialiased`}>
-        {children}
+        <ClientLayout>{children}</ClientLayout>
         <Analytics />
       </body>
     </html>
