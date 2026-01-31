@@ -5,14 +5,32 @@ import { type Stance } from "@/lib/spells";
 interface TurnWinIndicatorProps {
   winner: 1 | 2;
   stance: Stance;
+  spellId?: string;
   onAnimationEnd: () => void;
 }
 
+import { playCPUWinSound, playSpellSound } from "@/lib/spell-sounds";
+import { useEffect } from "react";
+
 export function TurnWinIndicator({
+  winner,
   stance,
+  spellId,
   onAnimationEnd,
 }: TurnWinIndicatorProps) {
   const variableName = `--${stance.toLowerCase()}`;
+
+  useEffect(() => {
+    if (winner === 2) {
+      playCPUWinSound();
+    }
+    if (spellId) {
+      // Delay slightly to match the "impact"
+      setTimeout(() => {
+        playSpellSound(spellId);
+      }, 300);
+    }
+  }, [winner, spellId]);
 
   return (
     <div

@@ -17,6 +17,7 @@ import { SpellSelector } from "./spell-selector";
 import { ActionLog } from "./action-log";
 import { TurnWinIndicator } from "./turn-win-indicator";
 import { RotateCcw, Swords, Trophy } from "lucide-react";
+import { playTieSound } from "@/lib/spell-sounds";
 
 interface GameBoardProps {
   gameMode: "cpu" | "local";
@@ -32,6 +33,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
   const [turnWin, setTurnWin] = useState<{
     winner: 1 | 2;
     stance: Stance;
+    spellId?: string;
   } | null>(null);
 
   const winner =
@@ -85,9 +87,8 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
           }));
         } else if (result === "lose") {
           messages.push("CPU wins the stance!");
-          setTurnWin({ winner: 2, stance: cpuStance });
-
           const cpuSpell = getCPUSpell(cpuStance);
+          setTurnWin({ winner: 2, stance: cpuStance, spellId: cpuSpell.id });
           const {
             caster,
             target,
@@ -126,6 +127,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
           }));
         } else {
           messages.push(`It's a tie! Both take ${TIE_DAMAGE} damage.`);
+          playTieSound();
 
           const p1WithDamage = {
             ...gameState.player1,
@@ -462,6 +464,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
           <TurnWinIndicator
             winner={turnWin.winner}
             stance={turnWin.stance}
+            spellId={turnWin.spellId}
             onAnimationEnd={() => setTurnWin(null)}
           />
         )}

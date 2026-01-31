@@ -433,3 +433,47 @@ export const playSpellSound = async (spellId: string) => {
     console.error("Error playing spell sound:", error);
   }
 };
+
+export const playTieSound = async () => {
+  await initAudio();
+  const synth = new Tone.MetalSynth({
+    envelope: { attack: 0.001, decay: 0.1, release: 0.01 },
+    harmonicity: 5.1,
+    modulationIndex: 32,
+    resonance: 4000,
+    octaves: 1.5,
+  }).toDestination();
+
+  synth.triggerAttackRelease(100, "16n");
+
+  const noise = new Tone.NoiseSynth({
+    noise: { type: "white" },
+    envelope: { attack: 0.005, decay: 0.1, sustain: 0 },
+  }).toDestination();
+
+  noise.triggerAttackRelease("16n");
+
+  setTimeout(() => {
+    synth.dispose();
+    noise.dispose();
+  }, 500);
+};
+
+export const playCPUWinSound = async () => {
+  await initAudio();
+  // deeply menacing sound
+  const osc = new Tone.Oscillator(100, "sawtooth").toDestination();
+  const filter = new Tone.Filter(1000, "lowpass").toDestination();
+  osc.connect(filter);
+
+  osc.start();
+  filter.frequency.rampTo(100, 0.5);
+  osc.frequency.rampTo(50, 0.5);
+
+  osc.stop("+0.6");
+
+  setTimeout(() => {
+    osc.dispose();
+    filter.dispose();
+  }, 1000);
+};
