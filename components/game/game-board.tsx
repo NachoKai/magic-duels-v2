@@ -74,7 +74,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
 
         if (result === "win") {
           messages.push("Player wins the stance!");
-          setTurnWin({ winner: 1, stance });
+          // setTurnWin moved to after spell cast
           setGameState((prev) => ({
             ...prev,
             player1Stance: stance,
@@ -186,7 +186,7 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
 
           if (result === "win") {
             messages.push("Player 1 wins the stance!");
-            setTurnWin({ winner: 1, stance: p1Stance });
+            // setTurnWin moved to after spell cast
             setGameState((prev) => ({
               ...prev,
               player2Stance: stance,
@@ -262,6 +262,11 @@ export function GameBoard({ gameMode, onBackToMenu }: GameBoardProps) {
         winner === 1 ? gameState.player1Stance : gameState.player2Stance;
 
       const messages = [`[${winnerStance}] ${winnerName} casts ${spell.name}!`];
+
+      // Trigger the win indicator (glow) here, now that the spell is successfully cast (drawn)
+      if (winnerStance) {
+        setTurnWin({ winner, stance: winnerStance });
+      }
 
       const {
         caster,

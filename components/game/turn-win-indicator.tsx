@@ -27,9 +27,7 @@ export function TurnWinIndicator({
       <div
         className="text-9xl font-black uppercase tracking-widest opacity-20 select-none"
         style={{ color: `var(${variableName})` }}
-      >
-        {stance}
-      </div>
+      ></div>
     </div>
   );
 }

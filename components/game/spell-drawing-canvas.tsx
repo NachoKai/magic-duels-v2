@@ -11,6 +11,8 @@ import {
   DRAWING_VALIDATION_THRESHOLD,
 } from "@/lib/game-config";
 
+import { playSpellSound, playMissSound, initAudio } from "@/lib/spell-sounds";
+
 interface SpellDrawingCanvasProps {
   spell: Spell;
   onSuccess: () => void;
@@ -37,6 +39,7 @@ export function SpellDrawingCanvas({
     if (result !== null || isComplete) return;
     setIsComplete(true);
     setResult("failure");
+    playMissSound();
     setTimeout(() => {
       onFailure();
     }, 1500);
@@ -192,6 +195,8 @@ export function SpellDrawingCanvas({
       const point = getPointFromEvent(e);
       if (!point) return;
 
+      initAudio();
+
       setIsDrawing(true);
       setPoints([point]);
       drawPoint(point);
@@ -265,8 +270,10 @@ export function SpellDrawingCanvas({
 
     setTimeout(() => {
       if (isMatch) {
+        playSpellSound(spell.id);
         onSuccess();
       } else {
+        playMissSound();
         onFailure();
       }
     }, 1500);
